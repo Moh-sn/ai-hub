@@ -11,6 +11,8 @@
 
 </div>
 
+![هوش مصنوعی هاب](screenshots/screenshot.png)
+
 ---
 
 <div dir="rtl">

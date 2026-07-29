@@ -11,6 +11,8 @@
 
 </div>
 
+![AI Hub Screenshot](screenshots/screenshot.png)
+
 ---
 
 ## 🌟 What is AI Hub?
