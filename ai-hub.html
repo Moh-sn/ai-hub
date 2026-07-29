@@ -1267,6 +1267,170 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    /* ─── INSTALL GUIDE MODAL ─── */
+    .install-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 400;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .install-overlay.show { display: flex; }
+    .install-panel {
+      width: 100%;
+      max-width: 600px;
+      max-height: 85vh;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      overflow-y: auto;
+      animation: modalIn 0.3s ease-out;
+    }
+    .install-header {
+      position: sticky;
+      top: 0;
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .install-title {
+      font-size: 18px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .install-close {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+    }
+    .install-close:hover {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: white;
+    }
+    .install-body {
+      padding: 24px;
+    }
+    .install-step {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 16px;
+      align-items: flex-start;
+    }
+    .install-step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--brand);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .install-step-content {
+      flex: 1;
+    }
+    .install-step-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .install-cmd {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 13px;
+      color: var(--text-primary);
+      direction: ltr;
+      text-align: left;
+    }
+    .install-cmd-copy {
+      margin-right: auto;
+      margin-left: 0;
+      padding: 3px 8px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      font-size: 11px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all var(--transition);
+      flex-shrink: 0;
+    }
+    .install-cmd-copy:hover {
+      border-color: var(--brand);
+      color: var(--brand-light);
+    }
+    .install-tips {
+      margin-top: 20px;
+      padding: 14px;
+      background: var(--brand-glow);
+      border: 1px solid rgba(220,38,38,0.2);
+      border-radius: var(--radius-md);
+    }
+    .install-tips-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--brand-light);
+    }
+    .install-tips li {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      list-style: none;
+      padding-right: 16px;
+      position: relative;
+    }
+    .install-tips li::before {
+      content: '•';
+      position: absolute;
+      right: 0;
+      color: var(--brand-light);
+      font-weight: 700;
+    }
+    .install-connect {
+      margin-top: 16px;
+      padding: 12px 14px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .install-connect strong {
+      color: var(--text-primary);
+    }
+
     /* ─── KEYFRAMES ─── */
     @keyframes slideUp {
       from { transform: translateY(100%); opacity: 0; }
@@ -1844,6 +2008,17 @@
     </div>
   </div>
 
+  <!-- ═══ INSTALL GUIDE MODAL ═══ -->
+  <div class="install-overlay" id="installOverlay" onclick="closeInstall(event)">
+    <div class="install-panel" onclick="event.stopPropagation()">
+      <div class="install-header">
+        <div class="install-title" id="installTitle"></div>
+        <button class="install-close" onclick="closeInstall()">✕</button>
+      </div>
+      <div class="install-body" id="installBody"></div>
+    </div>
+  </div>
+
   <!-- ═══ MOBILE BOTTOM NAVBAR ═══ -->
   <nav class="mobile-nav" id="mobileNav">
     <div class="mobile-nav-inner">
@@ -2076,6 +2251,69 @@ const categories = [
       { name: 'Flow (Google)', desc: 'طراحی و تولید محتوا با AI گوگل', icon: '🌊', pricing: 'freemium', level: 'beginner', url: 'https://flow.google.com', features: ['رایگان', 'ادغام Google', 'طراحی'] },
       { name: 'Ollama', desc: 'اجرای مدل‌ها روی کامپیوتر شخصی', icon: '🦙', pricing: 'free', level: 'pro', url: 'https://ollama.com', features: ['متن‌باز', 'آفلاین', 'رایگان'] }
     ]
+  },
+  {
+    id: 'agents-pro',
+    emoji: '🤖',
+    name: 'ایجنت‌های حرفه‌ای و CLI',
+    desc: 'ایجنت‌های کدنویسی و اتوماسیون با آموزش نصب',
+    tools: [
+      { name: 'Hermes Agent', desc: 'ایجنت هوشمند Nous Research — چند پلتفرمه، یادگیرنده', icon: '🪐', pricing: 'freemium', level: 'pro', url: 'https://github.com/NousResearch/hermes-agent', features: ['خود بهبودی', 'چند پلتفرم', 'حافظه پایدار', 'MCP'],
+        installGuide: {
+          steps: [
+            { cmd: 'curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash', desc: 'نصب با اسکریپت خودکار' },
+            { cmd: 'hermes setup', desc: 'تنظیم مدل و پروایدر' },
+            { cmd: 'hermes', desc: 'شروع چت' }
+          ],
+          tips: ['پروایدرها: OpenRouter, Anthropic, OpenAI, Google, DeepSeek', 'با هر مدلی کار میکنه', 'روی Linux, macOS, Windows اجرا میشه'],
+          connect: 'از طریق Telegram, Discord, Slack, WhatsApp و بیشتر متصل میشه'
+        }
+      },
+      { name: '9Router', desc: 'روتر هوشمند AI — اتصال همه CLI‌ها به 60+ پروایدر', icon: '🔀', pricing: 'free', level: 'pro', url: 'https://9router.com', features: ['60+ پروایدر', '3-tier fallback', 'صرفه‌جویی توکن', 'OpenAI-Compatible'],
+        installGuide: {
+          steps: [
+            { cmd: 'npm install -g 9router', desc: 'نصب سراسری' },
+            { cmd: '9router', desc: 'اجرای سرور (localhost:20128)' },
+            { cmd: 'point your tool to http://localhost:20128/v1', desc: 'اتصال ابزار' }
+          ],
+          tips: ['با Claude Code, Codex, Cursor, Cline, Hermes کار میکنه', 'رایگان: iFlow, Qwen, Kiro, OpenCode', 'صرفه‌جویی 20-65% توکن با RTK و Caveman'],
+          connect: 'هر ابزاری که OpenAI API پشتیبانی کنه بهش وصل میشه'
+        }
+      },
+      { name: 'Claude Code', desc: 'ایجنت کدنویسی Anthropic — ترمینال‌محور', icon: '🧠', pricing: 'paid', level: 'pro', url: 'https://docs.anthropic.com/en/docs/claude-code', features: ['درک پروژه', 'git خودکار', 'ابزارهای ترمینال', 'MCP'],
+        installGuide: {
+          steps: [
+            { cmd: 'npm install -g @anthropic-ai/claude-code', desc: 'نصب Claude Code' },
+            { cmd: 'claude', desc: 'شروع اولین پروژه' },
+            { cmd: '/init', desc: 'ایجاد CLAUDE.md برای پروژه' }
+          ],
+          tips: ['نیاز به API Key Anthropic داره', 'از طریق 9Router هم میشه متصلش کرد', 'Git خودکار commit میزنه'],
+          connect: ' مستقیم در ترمینال اجرا میشه'
+        }
+      },
+      { name: 'OpenAI Codex', desc: 'ایجنت کدنویسی OpenAI — CLI مدرن', icon: '⚡', pricing: 'paid', level: 'pro', url: 'https://github.com/openai/codex', features: ['sandbox امن', 'Git خودکار', 'multi-file', 'dry-run'],
+        installGuide: {
+          steps: [
+            { cmd: 'npm install -g @openai/codex', desc: 'نصب Codex CLI' },
+            { cmd: 'codex', desc: 'شروع کدنویسی' },
+            { cmd: 'codex --approval-mode full-auto', desc: 'حالت خودکار' }
+          ],
+          tips: ['نیاز به OpenAI API Key داره', 'Sandbox امن برای اجرای کد', 'dry-run برای تست قبل اجرا'],
+          connect: 'مستقیم در ترمینال اجرا میشه'
+        }
+      },
+      { name: 'Aider', desc: 'ایجنت کدنویسی متن‌باز — ویرایش فایل‌ها', icon: '🔧', pricing: 'freemium', level: 'pro', url: 'https://aider.chat', features: ['ویرایش چند فایل', 'Git خودکار', 'هر مدلی', 'متن‌باز'],
+        installGuide: {
+          steps: [
+            { cmd: 'pip install aider-chat', desc: 'نصب Aider' },
+            { cmd: 'aider --model claude-3-5-sonnet', desc: 'شروع با مدل خاص' },
+            { cmd: 'aider --model gpt-4o', desc: 'یا با GPT-4o' }
+          ],
+          tips: ['با هر مدلی کار میکنه', 'Git خودکار commit میزنه', 'رایگان با مدل‌های متن‌باز'],
+          connect: 'مستقیم در ترمینال اجرا میشه'
+        }
+      }
+    ]
   }
 ];
 
@@ -2242,6 +2480,7 @@ function renderToolsList(tools, filter) {
             <span class="tool-badge badge-${tool.level}">${tool.level === 'beginner' ? 'مبتدی' : 'حرفه‌ای'}</span>
           </div>
           <div style="display:flex;gap:8px;align-items:center;">
+            ${tool.installGuide ? `<button class="tool-visit" style="background:var(--bg-surface);border:1px solid var(--border-light);color:var(--text-secondary);" onclick="event.stopPropagation();openInstall('${tool.name.replace(/'/g, "\\'")}')">📚 آموزش نصب</button>` : ''}
             <div class="tooltip-wrapper" data-tooltip="${isInCompare ? 'حذف از مقایسه' : 'افزودن به مقایسه'}">
               <button class="tool-compare-btn ${isInCompare ? 'added' : ''}" onclick="event.stopPropagation();toggleCompare('${tool.name}','${tool.icon}','${tool.desc}','${tool.url}')">⚖️</button>
             </div>
@@ -2565,6 +2804,7 @@ document.addEventListener('keydown', e => {
     closeCompareModal();
     closeHelp();
     closeOnboarding();
+    closeInstall();
   }
 });
 
@@ -2591,6 +2831,64 @@ function openHelp() {
 function closeHelp(e) {
   if (e && e.target !== document.getElementById('helpOverlay')) return;
   document.getElementById('helpOverlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+// ═══════════════════════════════════════════
+//  INSTALL GUIDE
+// ═══════════════════════════════════════════
+function openInstall(toolName) {
+  // find tool across all categories
+  let tool = null;
+  for (const cat of categories) {
+    tool = cat.tools.find(t => t.name === toolName);
+    if (tool) break;
+  }
+  if (!tool || !tool.installGuide) return;
+
+  const guide = tool.installGuide;
+  document.getElementById('installTitle').innerHTML = `${tool.icon} آموزش نصب ${tool.name}`;
+
+  let html = '';
+  guide.steps.forEach((step, i) => {
+    html += `
+      <div class="install-step">
+        <div class="install-step-num">${i + 1}</div>
+        <div class="install-step-content">
+          <div class="install-step-desc">${step.desc}</div>
+          <div class="install-cmd">
+            <code>${step.cmd}</code>
+            <button class="install-cmd-copy" onclick="copyCmd(this, '${step.cmd.replace(/'/g, "\\'")}')">کپی</button>
+          </div>
+        </div>
+      </div>`;
+  });
+
+  if (guide.tips && guide.tips.length) {
+    html += `<div class="install-tips"><div class="install-tips-title">💡 نکات</div><ul>`;
+    guide.tips.forEach(t => html += `<li>${t}</li>`);
+    html += `</ul></div>`;
+  }
+
+  if (guide.connect) {
+    html += `<div class="install-connect"><strong>🔗 نحوه اتصال:</strong> ${guide.connect}</div>`;
+  }
+
+  document.getElementById('installBody').innerHTML = html;
+  document.getElementById('installOverlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function copyCmd(btn, cmd) {
+  navigator.clipboard.writeText(cmd).then(() => {
+    btn.textContent = 'کپی شد! ✓';
+    setTimeout(() => btn.textContent = 'کپی', 1500);
+  });
+}
+
+function closeInstall(e) {
+  if (e && e.target !== document.getElementById('installOverlay')) return;
+  document.getElementById('installOverlay').classList.remove('show');
   document.body.style.overflow = '';
 }
 
