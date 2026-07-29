@@ -6,13 +6,8 @@
 
 [![Persian](https://img.shields.io/badge/🇫🇦-فارسی-blue)](README-fa.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](LICENSE)
-[![HTML](https://img.shields.io/badge/Built%20with-HTML5-orange.svg)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-[![CSS](https://img.shields.io/badge/Built%20with-CSS3-blue.svg)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/Built%20with-JavaScript-yellow.svg)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 **A comprehensive, beautiful guide to the best AI tools — organized by category, with smart comparison, favorites, and installation guides.**
-
-[🚀 Live Demo](#) • [⭐ Features](#features) • [📱 Install](#installation) • [⌨️ Shortcuts](#keyboard-shortcuts)
 
 </div>
 
@@ -92,46 +87,6 @@ Professional AI agents (Hermes, 9Router, Claude Code, Codex, Aider) include step
 ### 📤 Share
 Share tool comparisons via Web Share API (mobile) or clipboard (desktop).
 
-### 📱 PWA
-Install AI Hub as a native app on your phone or desktop.
-
----
-
-## 🚀 Installation
-
-### Option 1: Direct Use
-Just open `ai-hub.html` in any modern browser. No server needed!
-
-### Option 2: GitHub Pages
-1. Fork this repository
-2. Enable GitHub Pages in Settings
-3. Your AI Hub is live!
-
-### Option 3: Local Server
-```bash
-# Clone the repo
-git clone https://github.com/erpycode/ai-hub.git
-
-# Open in browser
-open ai-hub.html
-# or
-python -m http.server 8000
-# then visit http://localhost:8000
-```
-
----
-
-## 📁 Project Structure
-
-```
-ai-hub/
-├── ai-hub.html      # Main application (single file)
-├── manifest.json     # PWA manifest
-├── README.md         # English documentation
-├── README-fa.md      # Persian documentation
-└── LICENSE           # MIT License
-```
-
 ---
 
 ## 🛠️ Tech Stack
@@ -141,16 +96,6 @@ ai-hub/
 - **JavaScript (ES6+)** — Vanilla JS, no frameworks
 - **localStorage** — Client-side data persistence
 - **PWA** — Service Worker ready
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to:
-- 🐛 Report bugs
-- 💡 Suggest new features
-- 🔧 Submit pull requests
-- 📝 Improve documentation
 
 ---
 
