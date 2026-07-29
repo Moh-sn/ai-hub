@@ -1706,7 +1706,7 @@
   <section class="categories-section" id="categories">
     <div class="section-header">
       <h2 class="section-title">📂 دسته‌بندی‌ها</h2>
-      <span class="section-badge" id="categoryCount">8 دسته</span>
+      <span class="section-badge" id="categoryCount"></span>
     </div>
     <div class="category-grid" id="categoryGrid"></div>
   </section>
@@ -1932,7 +1932,15 @@ const defaultRatings = {
   'Phind':           [8, 8, 7, 8, 9],
   'You.com':         [8, 7, 7, 8, 8],
   'Kagi':            [8, 9, 7, 5, 9],
-  'Gemini Search':   [9, 8, 7, 10, 9]
+  'Gemini Search':   [9, 8, 7, 10, 9],
+  'Hugging Face':    [6, 9, 10, 10, 7],
+  'LM Arena':        [9, 8, 7, 10, 8],
+  'Replicate':       [7, 8, 9, 8, 8],
+  'Together AI':     [7, 8, 8, 9, 9],
+  'Groq':            [8, 8, 7, 9, 10],
+  'OpenRouter':      [7, 8, 8, 9, 8],
+  'Flow (Google)':   [8, 7, 7, 8, 8],
+  'Ollama':          [7, 8, 8, 10, 8]
 };
 const ratingLabels = ['سادگی', 'کیفیت', 'امکانات', 'ارزش قیمت', 'سرعت'];
 
@@ -2027,11 +2035,11 @@ const categories = [
   {
     id: 'agents',
     emoji: '🤖',
-    name: 'چت‌بات و اگنت',
-    desc: 'ساخت ربات، اگنت هوشمند، و خودکارسازی',
+    name: 'چت‌بات و ایجنت (Agent)',
+    desc: 'ساخت ربات، ایجنت (Agent) هوشمند، و خودکارسازی',
     tools: [
-      { name: 'AutoGPT', desc: 'اگنت خودمختار برای انجام وظایف', icon: '🤖', pricing: 'free', level: 'pro', url: 'https://github.com/Significant-Gravitas/AutoGPT', features: ['خودمختار', 'متن‌باز', 'قابل گسترش'] },
-      { name: 'CrewAI', desc: 'چند اگنت هماهنگ برای کار تیمی', icon: '👥', pricing: 'free', level: 'pro', url: 'https://crewai.com', features: ['تیمی', 'متن‌باز', 'قابل شخصی‌سازی'] },
+      { name: 'AutoGPT', desc: 'ایجنت (Agent) خودمختار برای انجام وظایف', icon: '🤖', pricing: 'free', level: 'pro', url: 'https://github.com/Significant-Gravitas/AutoGPT', features: ['خودمختار', 'متن‌باز', 'قابل گسترش'] },
+      { name: 'CrewAI', desc: 'چند ایجنت (Agent) هماهنگ برای کار تیمی', icon: '👥', pricing: 'free', level: 'pro', url: 'https://crewai.com', features: ['تیمی', 'متن‌باز', 'قابل شخصی‌سازی'] },
       { name: 'Botpress', desc: 'ساخت چت‌بات بدون کدنویسی', icon: '💬', pricing: 'freemium', level: 'beginner', url: 'https://botpress.com', features: ['بدون کد', 'رابط بصری', 'ادغام'] },
       { name: 'n8n', desc: 'اتوماسیون و اتصال ابزارها با AI', icon: '🔗', pricing: 'freemium', level: 'pro', url: 'https://n8n.io', features: ['اتوماسیون', '۴۰۰+ ادغام', 'خودمیزبان'] },
       { name: 'Make (Integromat)', desc: 'اتوماسیون بصری با هوش مصنوعی', icon: '⚙️', pricing: 'freemium', level: 'beginner', url: 'https://make.com', features: ['رابط بصری', 'قالب آماده', 'ساده'] },
@@ -2050,6 +2058,22 @@ const categories = [
       { name: 'Kagi', desc: 'جستجوی بدون تبلیغ با AI', icon: '🔑', pricing: 'paid', level: 'pro', url: 'https://kagi.com', features: ['بدون تبلیغ', 'شخصی‌سازی', 'کیفیت بالا'] },
       { name: 'Gemini Search', desc: 'جستجوی Google با هوش مصنوعی', icon: '💎', pricing: 'free', level: 'beginner', url: 'https://gemini.google.com', features: ['رایگان', 'اطلاعات لحظه‌ای', 'ادغام Google'] }
     ]
+  },
+  {
+    id: 'platforms',
+    emoji: '🏗️',
+    name: 'پلتفرم‌های مدل و تست',
+    desc: 'دسترسی به مدل‌ها، مقایسه، و تست هوش مصنوعی',
+    tools: [
+      { name: 'Hugging Face', desc: 'بزرگترین مخزن مدل‌های هوش مصنوعی', icon: '🤗', pricing: 'freemium', level: 'pro', url: 'https://huggingface.co', features: ['هزاران مدل', 'Datasets', 'Inference API'] },
+      { name: 'LM Arena', desc: 'مقایسه زنده مدل‌ها با رای کاربران', icon: '🏟️', pricing: 'free', level: 'beginner', url: 'https://lmarena.ai', features: ['مقایسه نابینا', 'رای کاربران', 'رتبه‌بندی'] },
+      { name: 'Replicate', desc: 'اجرا و دسترسی به مدل‌های AI در ابر', icon: '☁️', pricing: 'freemium', level: 'pro', url: 'https://replicate.com', features: ['API ساده', 'هزاران مدل', 'پرداخت به مصرف'] },
+      { name: 'Together AI', desc: 'پلتفرم اجرای مدل‌های متن‌باز', icon: '🤝', pricing: 'freemium', level: 'pro', url: 'https://together.ai', features: ['سریع', 'ارزان', 'مدل‌های متنوع'] },
+      { name: 'Groq', desc: 'سریعترین اجرای مدل‌های زبانی', icon: '⚡', pricing: 'freemium', level: 'beginner', url: 'https://groq.com', features: ['سرعت بالا', 'رایگان', 'API'] },
+      { name: 'OpenRouter', desc: 'دسترسی به همه مدل‌ها از یک API', icon: '🔀', pricing: 'freemium', level: 'pro', url: 'https://openrouter.ai', features: ['یک API', 'چند مدل', 'ارزان'] },
+      { name: 'Flow (Google)', desc: 'طراحی و تولید محتوا با AI گوگل', icon: '🌊', pricing: 'freemium', level: 'beginner', url: 'https://flow.google.com', features: ['رایگان', 'ادغام Google', 'طراحی'] },
+      { name: 'Ollama', desc: 'اجرای مدل‌ها روی کامپیوتر شخصی', icon: '🦙', pricing: 'free', level: 'pro', url: 'https://ollama.com', features: ['متن‌باز', 'آفلاین', 'رایگان'] }
+    ]
   }
 ];
 
@@ -2065,7 +2089,8 @@ const wizardData = {
     { id: 'text', label: '✍️ نوشتن', category: 'text' },
     { id: 'data', label: '📊 تحلیل داده', category: 'data' },
     { id: 'agents', label: '🤖 اتوماسیون', category: 'agents' },
-    { id: 'search', label: '🔍 جستجو', category: 'search' }
+    { id: 'search', label: '🔍 جستجو', category: 'search' },
+    { id: 'platforms', label: '🏗️ پلتفرم مدل', category: 'platforms' }
   ],
   levels: [
     { id: 'beginner', label: 'مبتدی 🌱' },
@@ -2152,6 +2177,8 @@ function showRecommendations() {
 // ═══════════════════════════════════════════
 function renderCategories() {
   const grid = document.getElementById('categoryGrid');
+  const countEl = document.getElementById('categoryCount');
+  if (countEl) countEl.textContent = categories.length + ' دسته';
   grid.innerHTML = categories.map((cat, i) => `
     <div class="category-card animate-in" onclick="openCategory('${cat.id}')" style="animation-delay: ${i * 0.05}s">
       <span class="category-emoji">${cat.emoji}</span>
