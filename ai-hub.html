@@ -146,7 +146,7 @@
     }
     .search-bar input {
       width: 100%;
-      padding: 13px 20px 13px 48px;
+      padding: 13px 48px 13px 20px;
       background: var(--bg-surface);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
@@ -1319,6 +1319,365 @@
       0%, 100% { box-shadow: 0 0 20px var(--brand-glow); }
       50% { box-shadow: 0 0 40px var(--brand-glow-strong); }
     }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.3); opacity: 0; }
+      50% { transform: scale(1.05); }
+      70% { transform: scale(0.9); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* ─── ONBOARDING / WELCOME MODAL ─── */
+    .onboarding-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .onboarding-overlay.show { display: flex; }
+    .onboarding-card {
+      width: 100%;
+      max-width: 480px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 40px 32px;
+      text-align: center;
+      animation: bounceIn 0.5s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+    .onboarding-card::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, var(--brand-glow-strong), transparent 70%);
+      pointer-events: none;
+    }
+    .onboarding-emoji {
+      font-size: 56px;
+      margin-bottom: 16px;
+      display: block;
+      position: relative;
+    }
+    .onboarding-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      position: relative;
+    }
+    .onboarding-desc {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .onboarding-features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+      text-align: right;
+      position: relative;
+    }
+    .onboarding-feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+    .onboarding-feature-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .onboarding-feature-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .onboarding-feature-text strong {
+      color: var(--text-primary);
+      display: block;
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+    .onboarding-btn {
+      padding: 14px 40px;
+      background: var(--brand);
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all var(--transition);
+      font-family: inherit;
+      position: relative;
+    }
+    .onboarding-btn:hover {
+      background: var(--brand-light);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px var(--brand-glow-strong);
+    }
+    .onboarding-skip {
+      display: block;
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--text-dim);
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+      transition: color var(--transition);
+    }
+    .onboarding-skip:hover { color: var(--text-muted); }
+
+    /* ─── HELP MODAL ─── */
+    .help-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+      font-family: inherit;
+    }
+    .help-btn:hover {
+      border-color: var(--brand);
+      color: var(--brand-light);
+      background: var(--brand-glow);
+    }
+    .help-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 400;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .help-overlay.show { display: flex; }
+    .help-panel {
+      width: 100%;
+      max-width: 560px;
+      max-height: 80vh;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      overflow-y: auto;
+      animation: modalIn 0.3s ease-out;
+    }
+    .help-header {
+      position: sticky;
+      top: 0;
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .help-title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .help-close {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+    }
+    .help-close:hover {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: white;
+    }
+    .help-body {
+      padding: 24px;
+    }
+    .help-section {
+      margin-bottom: 20px;
+    }
+    .help-section:last-child { margin-bottom: 0; }
+    .help-section-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .help-section-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .help-tip {
+      padding: 10px 14px;
+      background: var(--brand-glow);
+      border: 1px solid rgba(220,38,38,0.2);
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-top: 8px;
+    }
+
+    /* ─── MOBILE BOTTOM NAVBAR ─── */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 160;
+      background: rgba(17,17,19,0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid var(--border);
+      padding: 6px 0 env(safe-area-inset-bottom, 6px);
+    }
+    .mobile-nav-inner {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .mobile-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      padding: 6px 12px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 10px;
+      font-weight: 500;
+      transition: all var(--transition);
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+    }
+    .mobile-nav-item.active {
+      color: var(--brand-light);
+    }
+    .mobile-nav-icon {
+      font-size: 20px;
+    }
+
+    /* ─── MOBILE RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .header-inner { height: 56px; }
+      .logo-text { font-size: 16px; }
+      .nav-links { display: none !important; }
+      .hamburger { display: none !important; }
+      .help-btn { display: none; }
+      .mobile-nav { display: block; }
+      body { padding-bottom: 70px; }
+
+      .search-section { padding: 12px 16px 0; }
+      .search-bar input { padding: 12px 44px 12px 16px; font-size: 14px; }
+
+      .wizard-section { padding: 20px 16px; }
+      .wizard-container { padding: 20px; }
+      .wizard-title { font-size: 18px; }
+      .wizard-steps { gap: 12px; flex-wrap: wrap; }
+      .wizard-options { gap: 8px; }
+      .wizard-option { padding: 8px 14px; font-size: 13px; }
+
+      .categories-section { padding: 0 16px 24px; }
+      .section-title { font-size: 17px; }
+      .category-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .category-card { padding: 18px; }
+      .category-emoji { font-size: 28px; margin-bottom: 10px; }
+      .category-name { font-size: 15px; }
+      .category-desc { font-size: 12px; margin-bottom: 10px; }
+
+      .tools-overlay { padding: 0; align-items: flex-end; }
+      .tools-panel {
+        max-height: 90vh;
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      }
+      .tools-panel-header { padding: 14px 18px; }
+      .tools-panel-body { padding: 14px 18px; }
+      .tool-card {
+        grid-template-columns: auto 1fr;
+        gap: 10px;
+        padding: 12px;
+      }
+      .tool-meta { grid-column: 1 / -1; margin-top: 2px; }
+      .tool-card > div:last-child {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100%;
+      }
+
+      .compare-tray { padding: 10px 12px; }
+      .compare-tray-inner { flex-wrap: wrap; gap: 8px; }
+      .tray-item { padding: 6px 10px; }
+      .tray-item-name { font-size: 12px; }
+      .btn-compare-go { padding: 8px 16px; font-size: 13px; }
+      .btn-compare-clear { padding: 8px 12px; font-size: 12px; }
+
+      .compare-modal { border-radius: var(--radius-lg) var(--radius-lg) 0 0; max-height: 95vh; }
+      .compare-modal-body { padding: 16px; }
+      .compare-header-cards { grid-template-columns: 1fr; gap: 10px; }
+      .compare-vs { width: 40px; height: 40px; font-size: 13px; margin: 0 auto; }
+      .score-section { grid-template-columns: 1fr; gap: 12px; }
+      .score-circle { width: 80px; height: 80px; }
+      .score-number { font-size: 22px; }
+      .bar-group { flex-direction: column; align-items: flex-start; gap: 6px; }
+      .bar-label { width: auto; }
+      .features-grid { grid-template-columns: 1fr; }
+
+      .toast { bottom: 90px; font-size: 13px; padding: 10px 16px; }
+
+      .onboarding-card { padding: 28px 20px; }
+      .onboarding-emoji { font-size: 44px; }
+      .onboarding-title { font-size: 20px; }
+      .onboarding-desc { font-size: 14px; }
+      .onboarding-feature { padding: 10px 12px; }
+      .onboarding-feature-icon { font-size: 18px; }
+      .onboarding-feature-text { font-size: 13px; }
+    }
   </style>
 </head>
 <body>
@@ -1335,7 +1694,9 @@
         <a class="nav-link" onclick="scrollToSection('wizard')">راهنمای سریع</a>
         <a class="nav-link" onclick="scrollToSection('categories')">دسته‌بندی‌ها</a>
       </nav>
-      <button class="hamburger" onclick="toggleNav()">☰</button>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <button class="help-btn" onclick="openHelp()" title="راهنما">؟</button>
+      </div>
     </div>
   </header>
 
@@ -1430,6 +1791,116 @@
 
 
   <!-- ═══ FOOTER ═══ -->
+  <!-- ═══ ONBOARDING / WELCOME MODAL ═══ -->
+  <div class="onboarding-overlay" id="onboardingOverlay">
+    <div class="onboarding-card">
+      <span class="onboarding-emoji">🤖</span>
+      <div class="onboarding-title">سلام! خوش اومدی 👋</div>
+      <div class="onboarding-desc">
+        اینجا <strong>AI Hub</strong> هست — یه راهنمای کامل برای همه ابزارهای هوش مصنوعی.<br>
+        اگه نمیدونی از کدوم AI استفاده کنی، اینجا جوابتو پیدا میکنی!
+      </div>
+      <div class="onboarding-features">
+        <div class="onboarding-feature">
+          <span class="onboarding-feature-icon">🔍</span>
+          <div class="onboarding-feature-text">
+            <strong>جستجو کن</strong>
+            دنبال ابزار خاصی بگرد — سریع پیداش میکنی
+          </div>
+        </div>
+        <div class="onboarding-feature">
+          <span class="onboarding-feature-icon">⚡</span>
+          <div class="onboarding-feature-text">
+            <strong>راهنمای سریع</strong>
+            بگو کارت چیه، بهترین ابزار رو بهت معرفی میکنیم
+          </div>
+        </div>
+        <div class="onboarding-feature">
+          <span class="onboarding-feature-icon">📂</span>
+          <div class="onboarding-feature-text">
+            <strong>دسته‌بندی‌ها</strong>
+            کدنویسی، عکس، ویدیو، صدا و بیشتر — همه یجا
+          </div>
+        </div>
+        <div class="onboarding-feature">
+          <span class="onboarding-feature-icon">⚖️</span>
+          <div class="onboarding-feature-text">
+            <strong>مقایسه کن</strong>
+            دوتا ابزار رو کنار هم ببین و بهترین رو انتخاب کن
+          </div>
+        </div>
+      </div>
+      <button class="onboarding-btn" onclick="closeOnboarding()">بزن بریم! 🚀</button>
+      <button class="onboarding-skip" onclick="closeOnboarding()">بعداً میبینم</button>
+    </div>
+  </div>
+
+  <!-- ═══ HELP MODAL ═══ -->
+  <div class="help-overlay" id="helpOverlay" onclick="closeHelp(event)">
+    <div class="help-panel" onclick="event.stopPropagation()">
+      <div class="help-header">
+        <div class="help-title">❓ راهنمای AI Hub</div>
+        <button class="help-close" onclick="closeHelp()">✕</button>
+      </div>
+      <div class="help-body">
+        <div class="help-section">
+          <div class="help-section-title">🔍 جستجو</div>
+          <div class="help-section-text">
+            توی نوار جستجو اسم ابزار یا دسته‌بندی رو تایپ کن. مثلاً "ویدیو" یا "ChatGPT". سریع فیلتر میشه!
+          </div>
+        </div>
+        <div class="help-section">
+          <div class="help-section-title">⚡ راهنمای سریع</div>
+          <div class="help-section-text">
+            ۳ تا سوال ساده ازت میپرسه: کارت چیه؟ سطحت چقدره؟ بودجه‌ات چقدره؟ بعد بهترین پیشنهادها رو نشونت میده.
+          </div>
+          <div class="help-tip">💡 هرچی دقیق‌تر جواب بدی، پیشنهاد بهتری میگیری!</div>
+        </div>
+        <div class="help-section">
+          <div class="help-section-title">📂 دسته‌بندی‌ها</div>
+          <div class="help-section-text">
+            روی هر دسته کلیک کن تا لیست کامل ابزارهاش رو ببینی. میتونی فیلتر کنی: رایگان، پولی، مبتدی، حرفه‌ای.
+          </div>
+        </div>
+        <div class="help-section">
+          <div class="help-section-title">⚖️ مقایسه</div>
+          <div class="help-section-text">
+            کنار هر ابزار یه دکمه ⚖️ هست. روش کلیک کن تا به لیست مقایسه اضافه بشه. وقتی ۲ تا اضافه کردی، دکمه "مقایسه کن" فعال میشه و نتیجه رو میبینی.
+          </div>
+          <div class="help-tip">💡 توی مقایسه میتونی ببینی کدوم ابزار از نظر کیفیت، قیمت و سرعت بهتره!</div>
+        </div>
+        <div class="help-section">
+          <div class="help-section-title">📱 موبایل</div>
+          <div class="help-section-text">
+            توی گوشی یه نوار پایین داری که سریع به هر بخش بری. مثل یه اپلیکیشن واقعی!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ MOBILE BOTTOM NAVBAR ═══ -->
+  <nav class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-inner">
+      <button class="mobile-nav-item active" onclick="mobileNavTo('home', this)">
+        <span class="mobile-nav-icon">🏠</span>
+        خانه
+      </button>
+      <button class="mobile-nav-item" onclick="mobileNavTo('wizard', this)">
+        <span class="mobile-nav-icon">⚡</span>
+        راهنما
+      </button>
+      <button class="mobile-nav-item" onclick="mobileNavTo('categories', this)">
+        <span class="mobile-nav-icon">📂</span>
+        دسته‌ها
+      </button>
+      <button class="mobile-nav-item" onclick="openHelp()">
+        <span class="mobile-nav-icon">❓</span>
+        کمک
+      </button>
+    </div>
+  </nav>
+
   <footer class="footer">
     <p class="footer-text">
       <span class="footer-heart">❤️</span> ساخته شده با عشق توسط
@@ -2096,14 +2567,56 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     closeTools();
     closeCompareModal();
+    closeHelp();
+    closeOnboarding();
   }
 });
+
+// ═══════════════════════════════════════════
+//  ONBOARDING
+// ═══════════════════════════════════════════
+function checkOnboarding() {
+  if (!localStorage.getItem('aihub_onboarded')) {
+    document.getElementById('onboardingOverlay').classList.add('show');
+  }
+}
+function closeOnboarding() {
+  document.getElementById('onboardingOverlay').classList.remove('show');
+  localStorage.setItem('aihub_onboarded', '1');
+}
+
+// ═══════════════════════════════════════════
+//  HELP MODAL
+// ═══════════════════════════════════════════
+function openHelp() {
+  document.getElementById('helpOverlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeHelp(e) {
+  if (e && e.target !== document.getElementById('helpOverlay')) return;
+  document.getElementById('helpOverlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+// ═══════════════════════════════════════════
+//  MOBILE NAV
+// ═══════════════════════════════════════════
+function mobileNavTo(section, btn) {
+  document.querySelectorAll('.mobile-nav-item').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  if (section === 'home') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    document.getElementById(section)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
 
 // ═══════════════════════════════════════════
 //  INIT
 // ═══════════════════════════════════════════
 renderWizardOptions();
 renderCategories();
+checkOnboarding();
 </script>
 
 </body>
