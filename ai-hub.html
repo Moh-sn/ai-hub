@@ -1951,6 +1951,21 @@
       .onboarding-feature { padding: 10px 12px; }
       .onboarding-feature-icon { font-size: 18px; }
       .onboarding-feature-text { font-size: 13px; }
+
+      .favorites-section { padding: 0 16px 20px; }
+      .favorites-grid { grid-template-columns: 1fr; }
+      .fav-card { padding: 12px; }
+
+      .install-overlay { padding: 0; align-items: flex-end; }
+      .install-panel { border-radius: var(--radius-lg) var(--radius-lg) 0 0; max-height: 90vh; }
+      .install-body { padding: 16px; }
+      .install-cmd { font-size: 13px; padding: 12px 14px; }
+
+      .shortcuts-panel { max-width: 100%; margin: 0 16px; }
+
+      .help-panel { max-width: 100%; margin: 0 16px; }
+
+      .compare-tray label, .compare-tray span { font-size: 12px; }
     }
   </style>
   <link rel="manifest" href="manifest.json">
@@ -1986,7 +2001,7 @@
         <span class="search-icon">🔍</span>
         <input type="text" id="searchInput" placeholder="جستجو کن... مثلاً: کدنویسی، ویدیو، عکس" oninput="handleSearch(this.value)">
       </div>
-      <button class="help-btn" onclick="openAdvancedFilter()" title="فیلتر پیشرفته" style="flex-shrink:0;">🔍</button>
+      <button class="help-btn" onclick="openAdvancedFilter()" title="فیلتر پیشرفته" style="flex-shrink:0;">⚙️</button>
     </div>
   </section>
 
@@ -1994,7 +2009,7 @@
   <div class="help-overlay" id="filterOverlay" onclick="closeAdvancedFilter(event)">
     <div class="help-panel" onclick="event.stopPropagation()" style="max-width:400px;">
       <div class="help-header">
-        <div class="help-title">🔍 فیلتر پیشرفته</div>
+        <div class="help-title">⚙️ فیلتر پیشرفته</div>
         <button class="help-close" onclick="closeAdvancedFilter()">✕</button>
       </div>
       <div class="help-body">
@@ -2494,7 +2509,7 @@ const categories = [
   },
   {
     id: 'agents-pro',
-    emoji: '🤖',
+    emoji: '🛠️',
     name: 'ایجنت‌های حرفه‌ای و CLI',
     desc: 'ایجنت‌های کدنویسی و اتوماسیون با آموزش نصب',
     tools: [
