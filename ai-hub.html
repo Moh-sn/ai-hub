@@ -2309,6 +2309,14 @@
 
 <script>
 // ═══════════════════════════════════════════
+//  PERSIAN NUMBERS
+// ═══════════════════════════════════════════
+function toPersianNum(num) {
+  const persianDigits = '۰۱۲۳۴۵۶۷۸۹';
+  return String(num).replace(/\d/g, d => persianDigits[d]);
+}
+
+// ═══════════════════════════════════════════
 //  AI HUB — DATA
 // ═══════════════════════════════════════════
 
@@ -2673,7 +2681,7 @@ function showRecommendations() {
 function renderCategories() {
   const grid = document.getElementById('categoryGrid');
   const countEl = document.getElementById('categoryCount');
-  if (countEl) countEl.textContent = categories.length + ' دسته';
+  if (countEl) countEl.textContent = toPersianNum(categories.length) + ' دسته';
   grid.innerHTML = categories.map((cat, i) => `
     <div class="category-card animate-in" onclick="openCategory('${cat.id}')" style="animation-delay: ${i * 0.05}s">
       <span class="category-emoji">${cat.emoji}</span>
@@ -2681,7 +2689,7 @@ function renderCategories() {
       <div class="category-desc">${cat.desc}</div>
       <div class="category-tools">
         ${cat.tools.slice(0, 4).map(t => `<span class="tool-tag">${t.name}</span>`).join('')}
-        ${cat.tools.length > 4 ? `<span class="tool-tag">+${cat.tools.length - 4}</span>` : ''}
+        ${cat.tools.length > 4 ? `<span class="tool-tag">+${toPersianNum(cat.tools.length - 4)}</span>` : ''}
       </div>
     </div>
   `).join('');
@@ -2690,8 +2698,8 @@ function renderCategories() {
   const freeTools = categories.reduce((sum, c) => sum + c.tools.filter(t => t.pricing === 'free' || t.pricing === 'freemium').length, 0);
   const statToolsEl = document.getElementById('statTools');
   const statFreeEl = document.getElementById('statFree');
-  if (statToolsEl) statToolsEl.textContent = totalTools;
-  if (statFreeEl) statFreeEl.textContent = freeTools;
+  if (statToolsEl) statToolsEl.textContent = toPersianNum(totalTools);
+  if (statFreeEl) statFreeEl.textContent = toPersianNum(freeTools);
 }
 
 function openCategory(catId) {
@@ -2843,7 +2851,7 @@ function toggleCompare(name, icon, desc, url) {
     }
     compareList.push({ name, icon, desc, url });
     if (compareList.length <= 2) {
-      showToast('✅', `${name} به مقایسه اضافه شد — ${compareList.length}/2`);
+      showToast('✅', `${name} به مقایسه اضافه شد — ${toPersianNum(compareList.length)}/۲`);
     }
   }
   renderCompareTray();
@@ -3005,7 +3013,7 @@ function openCompareModal() {
     <!-- Winner Banner -->
     <div class="winner-banner" id="winnerBanner">
       <div class="winner-banner-text">🏆 برنده: ${winner === 'a' ? a.name : b.name}</div>
-      <div class="winner-banner-sub">بر اساس امتیاز کل ${Math.max(scoreA, scoreB)} از ۱۰۰</div>
+      <div class="winner-banner-sub">بر اساس امتیاز کل ${toPersianNum(Math.max(scoreA, scoreB))} از ۱۰۰</div>
     </div>
   `;
 
@@ -3047,7 +3055,7 @@ function animateNumber(id, target) {
   const interval = setInterval(() => {
     current += step;
     if (current >= target) { current = target; clearInterval(interval); }
-    el.textContent = current;
+    el.textContent = toPersianNum(current);
   }, 30);
 }
 
@@ -3141,7 +3149,7 @@ function renderFavorites() {
   }
   section.classList.add('show');
   hint.style.display = 'none';
-  count.textContent = favs.length + ' ابزار';
+  count.textContent = toPersianNum(favs.length) + ' ابزار';
 
   grid.innerHTML = favs.map(f => `
     <div class="fav-card" onclick="window.open('${f.url}', '_blank')">
@@ -3249,7 +3257,7 @@ function applyAdvancedFilter() {
   }
 
   // Show results in categories overlay
-  document.getElementById('toolsPanelTitle').innerHTML = `🔍 نتیجه فیلتر (${toolsToShow.length} ابزار)`;
+  document.getElementById('toolsPanelTitle').innerHTML = `🔍 نتیجه فیلتر (${toPersianNum(toolsToShow.length)} ابزار)`;
   document.getElementById('filterBar').innerHTML = '';
 
   const isInCompare = (name) => compareList.some(c => c.name === name);
