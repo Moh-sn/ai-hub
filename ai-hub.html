@@ -742,41 +742,6 @@
     ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
 
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: block; }
-      .nav-links.open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 64px;
-        right: 0;
-        left: 0;
-        background: var(--bg-panel);
-        border-bottom: 1px solid var(--border);
-        padding: 12px;
-        gap: 4px;
-      }
-      .wizard-container { padding: 22px; }
-      .wizard-steps { flex-direction: column; gap: 10px; }
-      .compare-grid { grid-template-columns: 1fr; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .category-grid { grid-template-columns: 1fr; }
-      .tool-card { grid-template-columns: auto 1fr; }
-      .tool-meta { grid-column: 1 / -1; margin-top: 4px; }
-      .compare-tray { flex-wrap: wrap; }
-      .compare-tray-items { gap: 8px; }
-      .tray-item { min-width: 120px; }
-      .compare-modal { padding: 16px; }
-      .compare-modal-grid { grid-template-columns: 1fr; }
-      .compare-header-cards { grid-template-columns: 1fr; gap: 12px; }
-      .rating-bars { gap: 12px; }
-      .bar-group { flex-direction: column; align-items: flex-start; gap: 6px; }
-      .bar-label { width: 100px; flex-shrink: 0; }
-      .bar-track { width: 100%; }
-    }
-
     /* ─── COMPARE TRAY (Bottom Sticky) ─── */
     .compare-tray {
       display: none;
@@ -2201,8 +2166,10 @@ function renderCategories() {
 
   const totalTools = categories.reduce((sum, c) => sum + c.tools.length, 0);
   const freeTools = categories.reduce((sum, c) => sum + c.tools.filter(t => t.pricing === 'free' || t.pricing === 'freemium').length, 0);
-  document.getElementById('statTools').textContent = totalTools;
-  document.getElementById('statFree').textContent = freeTools;
+  const statToolsEl = document.getElementById('statTools');
+  const statFreeEl = document.getElementById('statFree');
+  if (statToolsEl) statToolsEl.textContent = totalTools;
+  if (statFreeEl) statFreeEl.textContent = freeTools;
 }
 
 function openCategory(catId) {
