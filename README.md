@@ -6,6 +6,7 @@
 
 [![Persian](https://img.shields.io/badge/🇫🇦-فارسی-blue)](README-fa.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](LICENSE)
+[![Live Demo](https://img.shields.io/badge/🌐-Live%20Demo-brightgreen)](https://erpycode.github.io/ai-hub/)
 
 **A comprehensive, beautiful guide to the best AI tools — organized by category, with smart comparison, favorites, and installation guides.**
 

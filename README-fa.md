@@ -6,6 +6,7 @@
 
 [![English](https://img.shields.io/badge/🇺🇸-English-green)](README.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](LICENSE)
+[![Live Demo](https://img.shields.io/badge/🌐-دموی%20زنده-brightgreen)](https://erpycode.github.io/ai-hub/)
 
 **یه وب‌اپ زیبا و جامع برای پیدا کردن بهترین ابزارهای هوش مصنوعی — دسته‌بندی شده، با مقایسه هوشمند، علاقه‌مندی‌ها و آموزش نصب.**
 
