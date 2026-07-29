@@ -1267,6 +1267,149 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    /* ─── FAVORITES ─── */
+    .fav-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+      flex-shrink: 0;
+    }
+    .fav-btn:hover {
+      border-color: #f59e0b;
+      background: rgba(245,158,11,0.1);
+    }
+    .fav-btn.active {
+      background: #f59e0b;
+      border-color: #f59e0b;
+      color: #000;
+    }
+    .favorites-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px 30px;
+      display: none;
+    }
+    .favorites-section.show { display: block; }
+    .favorites-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+    }
+    .fav-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .fav-card:hover {
+      border-color: #f59e0b;
+      transform: translateY(-2px);
+    }
+    .fav-card-icon { font-size: 24px; }
+    .fav-card-info { flex: 1; }
+    .fav-card-name { font-size: 14px; font-weight: 600; }
+    .fav-card-cat { font-size: 12px; color: var(--text-muted); }
+    .fav-card-remove {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      border: none;
+      color: var(--text-dim);
+      font-size: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+    }
+    .fav-card-remove:hover {
+      background: var(--brand);
+      color: white;
+    }
+    .fav-hint {
+      text-align: center;
+      padding: 20px;
+      color: var(--text-dim);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    /* ─── KEYBOARD SHORTCUTS MODAL ─── */
+    .shortcuts-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 400;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(10px);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .shortcuts-overlay.show { display: flex; }
+    .shortcuts-panel {
+      width: 100%;
+      max-width: 440px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      animation: modalIn 0.3s ease-out;
+    }
+    .shortcuts-header {
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .shortcuts-title { font-size: 18px; font-weight: 700; }
+    .shortcuts-body { padding: 20px 24px; }
+    .shortcut-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .shortcut-row:last-child { border-bottom: none; }
+    .shortcut-key {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .shortcut-key kbd {
+      display: inline-block;
+      padding: 3px 8px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-primary);
+      min-width: 28px;
+      text-align: center;
+    }
+    .shortcut-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
     /* ─── INSTALL GUIDE MODAL ─── */
     .install-overlay {
       display: none;
@@ -1361,19 +1504,17 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 16px 20px;
-      background: #0d1117;
+      padding: 14px 18px;
+      background: #161b22;
       border: 1px solid #30363d;
-      border-radius: 8px;
-      font-family: 'SF Mono', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
-      font-size: 16px;
+      border-radius: 6px;
+      font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+      font-size: 14px;
       font-weight: 400;
-      color: #f0f6fc;
+      color: #e6edf3;
       direction: ltr;
       text-align: left;
-      letter-spacing: 0;
-      line-height: 1.5;
-      word-break: break-all;
+      line-height: 1.6;
     }
     .install-cmd-copy {
       margin-right: auto;
@@ -1812,6 +1953,11 @@
       .onboarding-feature-text { font-size: 13px; }
     }
   </style>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0a0a0b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="AI Hub">
 </head>
 <body>
 
@@ -1835,11 +1981,50 @@
 
   <!-- ═══ SEARCH ═══ -->
   <section class="search-section">
-    <div class="search-bar">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="searchInput" placeholder="جستجو کن... مثلاً: کدنویسی، ویدیو، عکس" oninput="handleSearch(this.value)">
+    <div style="max-width:560px;margin:0 auto;display:flex;gap:8px;align-items:center;">
+      <div class="search-bar" style="flex:1;">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="جستجو کن... مثلاً: کدنویسی، ویدیو، عکس" oninput="handleSearch(this.value)">
+      </div>
+      <button class="help-btn" onclick="openAdvancedFilter()" title="فیلتر پیشرفته" style="flex-shrink:0;">🔍</button>
     </div>
   </section>
+
+  <!-- ═══ ADVANCED FILTER MODAL ═══ -->
+  <div class="help-overlay" id="filterOverlay" onclick="closeAdvancedFilter(event)">
+    <div class="help-panel" onclick="event.stopPropagation()" style="max-width:400px;">
+      <div class="help-header">
+        <div class="help-title">🔍 فیلتر پیشرفته</div>
+        <button class="help-close" onclick="closeAdvancedFilter()">✕</button>
+      </div>
+      <div class="help-body">
+        <div style="margin-bottom:16px;">
+          <label style="font-size:13px;color:var(--text-muted);display:block;margin-bottom:6px;">دسته‌بندی</label>
+          <select id="filterCategory" style="width:100%;padding:10px 14px;background:var(--bg-surface);border:1px solid var(--border-light);border-radius:var(--radius-md);color:var(--text-primary);font-family:inherit;font-size:14px;">
+            <option value="all">همه دسته‌ها</option>
+          </select>
+        </div>
+        <div style="margin-bottom:16px;">
+          <label style="font-size:13px;color:var(--text-muted);display:block;margin-bottom:6px;">قیمت</label>
+          <select id="filterPricing" style="width:100%;padding:10px 14px;background:var(--bg-surface);border:1px solid var(--border-light);border-radius:var(--radius-md);color:var(--text-primary);font-family:inherit;font-size:14px;">
+            <option value="all">همه</option>
+            <option value="free">رایگان</option>
+            <option value="freemium">Freemium</option>
+            <option value="paid">پولی</option>
+          </select>
+        </div>
+        <div style="margin-bottom:20px;">
+          <label style="font-size:13px;color:var(--text-muted);display:block;margin-bottom:6px;">سطح</label>
+          <select id="filterLevel" style="width:100%;padding:10px 14px;background:var(--bg-surface);border:1px solid var(--border-light);border-radius:var(--radius-md);color:var(--text-primary);font-family:inherit;font-size:14px;">
+            <option value="all">همه</option>
+            <option value="beginner">مبتدی</option>
+            <option value="pro">حرفه‌ای</option>
+          </select>
+        </div>
+        <button onclick="applyAdvancedFilter();closeAdvancedFilter();" style="width:100%;padding:12px;background:var(--brand);color:white;border:none;border-radius:var(--radius-md);font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;">اعمال فیلتر 🔍</button>
+      </div>
+    </div>
+  </div>
 
   <!-- ═══ WIZARD ═══ -->
   <section class="wizard-section" id="wizard">
@@ -1868,6 +2053,19 @@
         <div class="recommendation-cards" id="recommendationCards"></div>
       </div>
     </div>
+  </section>
+
+  <!-- ═══ FAVORITES ═══ -->
+  <section class="favorites-section" id="favoritesSection">
+    <div class="section-header">
+      <h2 class="section-title">⭐ علاقه‌مندی‌های من</h2>
+      <span class="section-badge" id="favCount">0 ابزار</span>
+    </div>
+    <div class="fav-hint" id="favHint">
+      💡 روی آیکون ⭐ کنار هر ابزار کلیک کن تا اینجا ذخیره بشه.<br>
+      علاقه‌مندی‌ها توی حافظه مرورگر ذخیره میشن — حتی اگه PWA نصب کنی باقی میمونن!
+    </div>
+    <div class="favorites-grid" id="favoritesGrid"></div>
   </section>
 
   <!-- ═══ CATEGORIES ═══ -->
@@ -1913,7 +2111,10 @@
     <div class="compare-modal" onclick="event.stopPropagation()">
       <div class="compare-modal-header">
         <div class="compare-modal-title">⚖️ مقایسه ابزارها</div>
-        <button class="compare-modal-close" onclick="closeCompareModal()">✕</button>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <button class="help-btn" onclick="shareCompare()" title="اشتراک‌گذاری" style="font-size:13px;">📤</button>
+          <button class="compare-modal-close" onclick="closeCompareModal()">✕</button>
+        </div>
       </div>
       <div class="compare-modal-body" id="compareModalBody"></div>
     </div>
@@ -2008,6 +2209,41 @@
             توی گوشی یه نوار پایین داری که سریع به هر بخش بری. مثل یه اپلیکیشن واقعی!
           </div>
         </div>
+        <div class="help-section">
+          <div class="help-section-title">⌨️ کلیدهای میانبر</div>
+          <div class="help-section-text">
+            <code>/</code> جستجو &nbsp;|&nbsp;
+            <code>Esc</code> بستن &nbsp;|&nbsp;
+            <code>H</code> خانه &nbsp;|&nbsp;
+            <code>C</code> دسته‌بندی‌ها &nbsp;|&nbsp;
+            <code>?</code> راهنما &nbsp;|&nbsp;
+            <code>R</code> ابزار تصادفی
+          </div>
+        </div>
+        <div class="help-section">
+          <div class="help-section-title">⭐ علاقه‌مندی‌ها</div>
+          <div class="help-section-text">
+            روی آیکون ⭐ کنار هر ابزار کلیک کن تا ذخیره بشه. علاقه‌مندی‌ها توی حافظه مرورگر ذخیره میشن و حتی بعد از بستن صفحه باقی میمونن!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ KEYBOARD SHORTCUTS MODAL ═══ -->
+  <div class="shortcuts-overlay" id="shortcutsOverlay" onclick="closeShortcuts(event)">
+    <div class="shortcuts-panel" onclick="event.stopPropagation()">
+      <div class="shortcuts-header">
+        <div class="shortcuts-title">⌨️ کلیدهای میانبر</div>
+        <button class="help-close" onclick="closeShortcuts()">✕</button>
+      </div>
+      <div class="shortcuts-body">
+        <div class="shortcut-row"><span class="shortcut-desc">جستجو</span><span class="shortcut-key"><kbd>/</kbd></span></div>
+        <div class="shortcut-row"><span class="shortcut-desc">بستن پنجره‌ها</span><span class="shortcut-key"><kbd>Esc</kbd></span></div>
+        <div class="shortcut-row"><span class="shortcut-desc">رفتن به خانه</span><span class="shortcut-key"><kbd>H</kbd></span></div>
+        <div class="shortcut-row"><span class="shortcut-desc">رفتن به دسته‌بندی‌ها</span><span class="shortcut-key"><kbd>C</kbd></span></div>
+        <div class="shortcut-row"><span class="shortcut-desc">راهنما</span><span class="shortcut-key"><kbd>?</kbd></span></div>
+        <div class="shortcut-row"><span class="shortcut-desc">ابزار تصادفی</span><span class="shortcut-key"><kbd>R</kbd></span></div>
       </div>
     </div>
   </div>
@@ -2485,6 +2721,9 @@ function renderToolsList(tools, filter) {
           </div>
           <div style="display:flex;gap:8px;align-items:center;">
             ${tool.installGuide ? `<button class="tool-visit" style="background:var(--bg-surface);border:1px solid var(--border-light);color:var(--text-secondary);" onclick="event.stopPropagation();openInstall('${tool.name.replace(/'/g, "\\'")}')">📚 آموزش نصب</button>` : ''}
+            <div class="tooltip-wrapper" data-tooltip="افزودن به علاقه‌مندی">
+              <button class="fav-btn ${isFavorite(tool.name) ? 'active' : ''}" onclick="event.stopPropagation();toggleFavorite('${tool.name}','${tool.icon}','${tool.desc.replace(/'/g,"\\'")}','${tool.url}','')">⭐</button>
+            </div>
             <div class="tooltip-wrapper" data-tooltip="${isInCompare ? 'حذف از مقایسه' : 'افزودن به مقایسه'}">
               <button class="tool-compare-btn ${isInCompare ? 'added' : ''}" onclick="event.stopPropagation();toggleCompare('${tool.name}','${tool.icon}','${tool.desc}','${tool.url}')">⚖️</button>
             </div>
@@ -2809,6 +3048,8 @@ document.addEventListener('keydown', e => {
     closeHelp();
     closeOnboarding();
     closeInstall();
+    closeShortcuts();
+    closeAdvancedFilter();
   }
 });
 
@@ -2836,6 +3077,195 @@ function closeHelp(e) {
   if (e && e.target !== document.getElementById('helpOverlay')) return;
   document.getElementById('helpOverlay').classList.remove('show');
   document.body.style.overflow = '';
+}
+
+// ═══════════════════════════════════════════
+//  FAVORITES (localStorage)
+// ═══════════════════════════════════════════
+function getFavorites() {
+  try { return JSON.parse(localStorage.getItem('aihub_favorites') || '[]'); }
+  catch { return []; }
+}
+function saveFavorites(favs) {
+  localStorage.setItem('aihub_favorites', JSON.stringify(favs));
+}
+function isFavorite(name) {
+  return getFavorites().some(f => f.name === name);
+}
+function toggleFavorite(name, icon, desc, url, catName) {
+  const favs = getFavorites();
+  const idx = favs.findIndex(f => f.name === name);
+  if (idx > -1) {
+    favs.splice(idx, 1);
+    showToast('💔', `${name} از علاقه‌مندی‌ها حذف شد`);
+  } else {
+    favs.push({ name, icon, desc, url, catName });
+    showToast('⭐', `${name} به علاقه‌مندی‌ها اضافه شد`);
+  }
+  saveFavorites(favs);
+  renderFavorites();
+  // re-render tools list to update star buttons
+  const catTitle = document.getElementById('toolsPanelTitle')?.textContent || '';
+  const cat = categories.find(c => catTitle.includes(c.name));
+  if (cat) {
+    const activeFilter = document.querySelector('.filter-btn.active')?.textContent || 'همه';
+    const filterMap = {'همه':'all','رایگان':'free','پولی':'paid','مبتدی':'beginner','حرفه‌ای':'pro'};
+    renderToolsList(cat.tools, filterMap[activeFilter] || 'all');
+  }
+}
+function renderFavorites() {
+  const favs = getFavorites();
+  const section = document.getElementById('favoritesSection');
+  const grid = document.getElementById('favoritesGrid');
+  const hint = document.getElementById('favHint');
+  const count = document.getElementById('favCount');
+
+  if (favs.length === 0) {
+    section.classList.remove('show');
+    return;
+  }
+  section.classList.add('show');
+  hint.style.display = 'none';
+  count.textContent = favs.length + ' ابزار';
+
+  grid.innerHTML = favs.map(f => `
+    <div class="fav-card" onclick="window.open('${f.url}', '_blank')">
+      <span class="fav-card-icon">${f.icon}</span>
+      <div class="fav-card-info">
+        <div class="fav-card-name">${f.name}</div>
+        <div class="fav-card-cat">${f.catName || ''}</div>
+      </div>
+      <button class="fav-card-remove" onclick="event.stopPropagation();toggleFavorite('${f.name.replace(/'/g,"\\'")}','${f.icon}','${f.desc.replace(/'/g,"\\'")}','${f.url}','${f.catName||''}')">✕</button>
+    </div>
+  `).join('');
+}
+
+// ═══════════════════════════════════════════
+//  KEYBOARD SHORTCUTS
+// ═══════════════════════════════════════════
+function openShortcuts() {
+  document.getElementById('shortcutsOverlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeShortcuts(e) {
+  if (e && e.target !== document.getElementById('shortcutsOverlay')) return;
+  document.getElementById('shortcutsOverlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+// ═══════════════════════════════════════════
+//  SHARE
+// ═══════════════════════════════════════════
+function shareTool(name, url) {
+  const text = `🤖 ${name} — AI Hub\n${url}`;
+  if (navigator.share) {
+    navigator.share({ title: name, text, url });
+  } else {
+    navigator.clipboard.writeText(text).then(() => {
+      showToast('📤', 'لینک کپی شد!');
+    });
+  }
+}
+function shareCompare() {
+  if (compareList.length < 2) return;
+  const text = `⚖️ مقایسه: ${compareList[0].name} vs ${compareList[1].name}\n🤖 AI Hub`;
+  if (navigator.share) {
+    navigator.share({ title: 'مقایسه AI Hub', text });
+  } else {
+    navigator.clipboard.writeText(text).then(() => {
+      showToast('📤', 'لینک مقایسه کپی شد!');
+    });
+  }
+}
+
+// ═══════════════════════════════════════════
+//  RANDOM TOOL
+// ═══════════════════════════════════════════
+function randomTool() {
+  const allTools = categories.flatMap(c => c.tools.map(t => ({ ...t, catName: c.name })));
+  const tool = allTools[Math.floor(Math.random() * allTools.length)];
+  if (tool) {
+    showToast(tool.icon, `${tool.name} — ${tool.catName}`);
+    window.open(tool.url, '_blank');
+  }
+}
+
+// ═══════════════════════════════════════════
+//  ADVANCED FILTER
+// ═══════════════════════════════════════════
+function openAdvancedFilter() {
+  // Populate category dropdown
+  const catSelect = document.getElementById('filterCategory');
+  if (catSelect && catSelect.options.length <= 1) {
+    categories.forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c.id;
+      opt.textContent = c.emoji + ' ' + c.name;
+      catSelect.appendChild(opt);
+    });
+  }
+  document.getElementById('filterOverlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeAdvancedFilter(e) {
+  if (e && e.target !== document.getElementById('filterOverlay')) return;
+  document.getElementById('filterOverlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
+// ═══════════════════════════════════════════
+function applyAdvancedFilter() {
+  const pricing = document.getElementById('filterPricing')?.value || 'all';
+  const level = document.getElementById('filterLevel')?.value || 'all';
+  const catId = document.getElementById('filterCategory')?.value || 'all';
+
+  let toolsToShow = [];
+  if (catId === 'all') {
+    toolsToShow = categories.flatMap(c => c.tools.map(t => ({ ...t, catName: c.name, catEmoji: c.emoji })));
+  } else {
+    const cat = categories.find(c => c.id === catId);
+    if (cat) toolsToShow = cat.tools.map(t => ({ ...t, catName: cat.name, catEmoji: cat.emoji }));
+  }
+
+  if (pricing !== 'all') {
+    toolsToShow = toolsToShow.filter(t => t.pricing === pricing);
+  }
+  if (level !== 'all') {
+    toolsToShow = toolsToShow.filter(t => t.level === level);
+  }
+
+  // Show results in categories overlay
+  document.getElementById('toolsPanelTitle').innerHTML = `🔍 نتیجه فیلتر (${toolsToShow.length} ابزار)`;
+  document.getElementById('filterBar').innerHTML = '';
+
+  const isInCompare = (name) => compareList.some(c => c.name === name);
+  document.getElementById('toolsList').innerHTML = toolsToShow.map(tool => `
+    <div class="tool-card">
+      <div class="tool-icon">${tool.icon}</div>
+      <div class="tool-info">
+        <h4>${tool.name} <span style="font-size:11px;color:var(--text-dim);">${tool.catEmoji || ''} ${tool.catName || ''}</span></h4>
+        <p>${tool.desc}</p>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+        <div class="tool-meta">
+          <span class="tool-badge badge-${tool.pricing}">${tool.pricing === 'free' ? 'رایگان' : tool.pricing === 'freemium' ? 'freemium' : 'پولی'}</span>
+          <span class="tool-badge badge-${tool.level}">${tool.level === 'beginner' ? 'مبتدی' : 'حرفه‌ای'}</span>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          ${tool.installGuide ? `<button class="tool-visit" style="background:var(--bg-surface);border:1px solid var(--border-light);color:var(--text-secondary);" onclick="event.stopPropagation();openInstall('${tool.name.replace(/'/g, "\\'")}')">📚 آموزش نصب</button>` : ''}
+          <div class="tooltip-wrapper" data-tooltip="افزودن به علاقه‌مندی">
+            <button class="fav-btn ${isInCompare(tool.name) ? 'active' : ''}" onclick="event.stopPropagation();toggleFavorite('${tool.name}','${tool.icon}','${tool.desc.replace(/'/g,"\\'")}','${tool.url}','${tool.catName||''}')">⭐</button>
+          </div>
+          <div class="tooltip-wrapper" data-tooltip="${isInCompare(tool.name) ? 'حذف از مقایسه' : 'افزودن به مقایسه'}">
+            <button class="tool-compare-btn ${isInCompare(tool.name) ? 'added' : ''}" onclick="event.stopPropagation();toggleCompare('${tool.name}','${tool.icon}','${tool.desc}','${tool.url}')">⚖️</button>
+          </div>
+          <a href="${tool.url}" target="_blank" class="tool-visit">مشاهده →</a>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  document.getElementById('toolsOverlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
 }
 
 // ═══════════════════════════════════════════
@@ -2914,7 +3344,19 @@ function mobileNavTo(section, btn) {
 // ═══════════════════════════════════════════
 renderWizardOptions();
 renderCategories();
+renderFavorites();
 checkOnboarding();
+
+// Keyboard shortcuts
+document.addEventListener('keydown', e => {
+  // Don't trigger if typing in input
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if (e.key === '/') { e.preventDefault(); document.getElementById('searchInput')?.focus(); }
+  else if (e.key === 'h' || e.key === 'H') { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+  else if (e.key === 'c' || e.key === 'C') { scrollToSection('categories'); }
+  else if (e.key === '?') { openHelp(); }
+  else if (e.key === 'r' || e.key === 'R') { randomTool(); }
+});
 </script>
 
 </body>
