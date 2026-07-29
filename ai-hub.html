@@ -2049,15 +2049,15 @@
 
       <div class="wizard-steps" id="wizardSteps">
         <div class="wizard-step">
-          <div class="step-num active" id="step1Num">1</div>
+          <div class="step-num active" id="step1Num">۱</div>
           <span class="step-label active" id="step1Label">کارت چیه؟</span>
         </div>
         <div class="wizard-step">
-          <div class="step-num" id="step2Num">2</div>
+          <div class="step-num" id="step2Num">۲</div>
           <span class="step-label" id="step2Label">سطح تجربه</span>
         </div>
         <div class="wizard-step">
-          <div class="step-num" id="step3Num">3</div>
+          <div class="step-num" id="step3Num">۳</div>
           <span class="step-label" id="step3Label">بودجه</span>
         </div>
       </div>
@@ -3310,7 +3310,7 @@ function openInstall(toolName) {
   guide.steps.forEach((step, i) => {
     html += `
       <div class="install-step">
-        <div class="install-step-num">${i + 1}</div>
+        <div class="install-step-num">${toPersianNum(i + 1)}</div>
         <div class="install-step-content">
           <div class="install-step-desc">${step.desc}</div>
           <div class="install-cmd">
