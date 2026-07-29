@@ -1,0 +1,175 @@
+<div align="center">
+
+# 🤖 AI Hub
+
+### The Ultimate AI Tools Directory
+
+[![Persian](https://img.shields.io/badge/🇫🇦-فارسی-blue)](README-fa.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](LICENSE)
+[![HTML](https://img.shields.io/badge/Built%20with-HTML5-orange.svg)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS](https://img.shields.io/badge/Built%20with-CSS3-blue.svg)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/Built%20with-JavaScript-yellow.svg)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
+**A comprehensive, beautiful guide to the best AI tools — organized by category, with smart comparison, favorites, and installation guides.**
+
+[🚀 Live Demo](#) • [⭐ Features](#features) • [📱 Install](#installation) • [⌨️ Shortcuts](#keyboard-shortcuts)
+
+</div>
+
+---
+
+## 🌟 What is AI Hub?
+
+**AI Hub** is a modern, single-file web application that helps you discover and compare the best AI tools available today. Whether you're a developer, designer, content creator, or just curious about AI — AI Hub has something for you.
+
+> *"If you don't know which AI tool to use for your work, you'll find the answer here."*
+
+### ✨ Key Highlights
+
+- 🎯 **10 Categories** with **65+ AI tools**
+- ⚖️ **Smart Comparison** — compare any two tools side-by-side
+- 📚 **Installation Guides** — step-by-step setup for professional agents
+- ⭐ **Favorites** — save your favorite tools (localStorage)
+- 🔍 **Advanced Filter** — filter by category, price, and skill level
+- ⌨️ **Keyboard Shortcuts** — power user navigation
+- 📱 **PWA Ready** — installable as a mobile app
+- 🌙 **Dark Theme** — easy on the eyes
+- 🔢 **Persian Numbers** — fully localized for Farsi speakers
+
+---
+
+## 📂 Categories
+
+| Category | Tools | Description |
+|----------|-------|-------------|
+| 🖥️ **Coding** | 8 | GitHub Copilot, Cursor, Claude Code, ChatGPT, and more |
+| 🎨 **Image Generation** | 7 | Midjourney, DALL-E 3, Stable Diffusion, Flux |
+| 🎬 **Video Creation** | 8 | Runway ML, Sora, Kling, Higgsfield, and more |
+| 🎵 **Audio & Music** | 6 | ElevenLabs, Suno, Udio, and more |
+| ✍️ **Writing** | 6 | ChatGPT, Claude, Gemini, Grammarly |
+| 📊 **Data Analysis** | 5 | Julius AI, NotebookLM, Claude Projects |
+| 🤖 **Agents & Automation** | 6 | AutoGPT, CrewAI, n8n, Make |
+| 🔍 **Smart Search** | 5 | Perplexity, Phind, Kagi |
+| 🏗️ **Model Platforms** | 8 | Hugging Face, LM Arena, Ollama, Groq |
+| 🛠️ **Pro Agents & CLI** | 5 | Hermes Agent, 9Router, Claude Code, Codex, Aider |
+
+---
+
+## ⚡ Features
+
+### 🔍 Smart Search
+Type any tool name or category — results appear instantly.
+
+### ⚡ Quick Guide Wizard
+Answer 3 simple questions and get personalized AI tool recommendations:
+1. What's your task?
+2. What's your experience level?
+3. What's your budget?
+
+### ⚖️ Tool Comparison
+Click the ⚖️ button on any tool card to add it to comparison. When you have 2 tools selected:
+- See **overall scores** (out of 100)
+- Compare **5 criteria**: Ease of Use, Quality, Features, Value, Speed
+- View **feature lists** side by side
+- See the **winner** highlighted
+
+### ⭐ Favorites
+Click the ⭐ button to save tools to your favorites. Stored in localStorage — works even after closing the browser or installing as PWA.
+
+### 📚 Installation Guides
+Professional AI agents (Hermes, 9Router, Claude Code, Codex, Aider) include step-by-step installation guides with copy-to-clipboard commands.
+
+### ⌨️ Keyboard Shortcuts
+| Key | Action |
+|-----|--------|
+| `/` | Focus search |
+| `Esc` | Close modals |
+| `H` | Scroll to top |
+| `C` | Go to categories |
+| `?` | Open help |
+| `R` | Open random tool |
+
+### 📤 Share
+Share tool comparisons via Web Share API (mobile) or clipboard (desktop).
+
+### 📱 PWA
+Install AI Hub as a native app on your phone or desktop.
+
+---
+
+## 🚀 Installation
+
+### Option 1: Direct Use
+Just open `ai-hub.html` in any modern browser. No server needed!
+
+### Option 2: GitHub Pages
+1. Fork this repository
+2. Enable GitHub Pages in Settings
+3. Your AI Hub is live!
+
+### Option 3: Local Server
+```bash
+# Clone the repo
+git clone https://github.com/erpycode/ai-hub.git
+
+# Open in browser
+open ai-hub.html
+# or
+python -m http.server 8000
+# then visit http://localhost:8000
+```
+
+---
+
+## 📁 Project Structure
+
+```
+ai-hub/
+├── ai-hub.html      # Main application (single file)
+├── manifest.json     # PWA manifest
+├── README.md         # English documentation
+├── README-fa.md      # Persian documentation
+└── LICENSE           # MIT License
+```
+
+---
+
+## 🛠️ Tech Stack
+
+- **HTML5** — Semantic markup
+- **CSS3** — Custom properties, Grid, Flexbox, Animations
+- **JavaScript (ES6+)** — Vanilla JS, no frameworks
+- **localStorage** — Client-side data persistence
+- **PWA** — Service Worker ready
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to:
+- 🐛 Report bugs
+- 💡 Suggest new features
+- 🔧 Submit pull requests
+- 📝 Improve documentation
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 👨‍💻 Author
+
+**ErPyCode** — [GitHub](https://github.com/erpycode) • [Telegram](https://t.me/erpycodes)
+
+---
+
+<div align="center">
+
+**Made with ❤️ by [ErPyCode](https://github.com/erpycode)**
+
+[⬆️ Back to Top](#-ai-hub)
+
+</div>
