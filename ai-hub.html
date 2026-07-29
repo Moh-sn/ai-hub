@@ -1245,6 +1245,63 @@
       margin-top: 4px;
     }
 
+    /* ─── TOAST NOTIFICATION ─── */
+    .toast {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 12px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+      z-index: 250;
+      opacity: 0;
+      transition: all 0.3s ease;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-lg);
+      white-space: nowrap;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    .toast-icon { font-size: 16px; }
+
+    /* ─── TOOLTIP ─── */
+    .tooltip-wrapper {
+      position: relative;
+    }
+    .tooltip-wrapper::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 6px 10px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.2s ease;
+      z-index: 50;
+    }
+    .tooltip-wrapper:hover::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
     /* ─── KEYFRAMES ─── */
     @keyframes slideUp {
       from { transform: translateY(100%); opacity: 0; }
@@ -1277,7 +1334,6 @@
         <a class="nav-link active" onclick="showHome()">خانه</a>
         <a class="nav-link" onclick="scrollToSection('wizard')">راهنمای سریع</a>
         <a class="nav-link" onclick="scrollToSection('categories')">دسته‌بندی‌ها</a>
-        <a class="nav-link" onclick="scrollToSection('compare')">مقایسه</a>
       </nav>
       <button class="hamburger" onclick="toggleNav()">☰</button>
     </div>
@@ -1329,32 +1385,7 @@
     <div class="category-grid" id="categoryGrid"></div>
   </section>
 
-  <!-- ═══ COMPARE ═══ -->
-  <section class="compare-section" id="compare">
-    <div class="section-header">
-      <h2 class="section-title">⚖️ مقایسه ابزارها</h2>
-      <span class="section-badge">به زودی</span>
-    </div>
-    <div class="compare-wrapper">
-      <div class="compare-grid">
-        <div class="compare-slot" id="compareSlot1">
-          <div class="compare-placeholder">
-            <span>1️⃣</span>
-            یک ابزار انتخاب کنید<br>
-            (از دسته‌بندی‌ها)
-          </div>
-        </div>
-        <div class="compare-slot" id="compareSlot2">
-          <div class="compare-placeholder">
-            <span>2️⃣</span>
-            یک ابزار دیگر انتخاب کنید<br>
-            (از دسته‌بندی‌ها)
-          </div>
-        </div>
-      </div>
-      <div class="vs-divider">VS</div>
-    </div>
-  </section>
+  <!-- ═══ COMPARE (Removed — compare is via tray + modal) ═══ -->
 
   <!-- ═══ TOOLS OVERLAY ═══ -->
   <div class="tools-overlay" id="toolsOverlay" onclick="closeTools(event)">
@@ -1372,7 +1403,10 @@
   <!-- ═══ COMPARE TRAY (Bottom Sticky) ═══ -->
   <div class="compare-tray" id="compareTray">
     <div class="compare-tray-inner">
-      <div class="compare-tray-items" id="compareTrayItems"></div>
+      <div style="display:flex;align-items:center;gap:12px;flex:1;min-width:0;">
+        <span style="font-size:13px;color:var(--text-muted);white-space:nowrap;flex-shrink:0;">⚖️ مقایسه:</span>
+        <div class="compare-tray-items" id="compareTrayItems"></div>
+      </div>
       <div class="compare-tray-actions">
         <button class="btn-compare-clear" onclick="clearCompare()">پاک کردن</button>
         <button class="btn-compare-go" id="compareGoBtn" onclick="openCompareModal()" disabled>مقایسه کن ⚖️</button>
@@ -1390,6 +1424,9 @@
       <div class="compare-modal-body" id="compareModalBody"></div>
     </div>
   </div>
+
+  <!-- ═══ TOAST ═══ -->
+  <div class="toast" id="toast"><span class="toast-icon" id="toastIcon"></span><span id="toastText"></span></div>
 
 
   <!-- ═══ FOOTER ═══ -->
@@ -1738,7 +1775,9 @@ function renderToolsList(tools, filter) {
             <span class="tool-badge badge-${tool.level}">${tool.level === 'beginner' ? 'مبتدی' : 'حرفه‌ای'}</span>
           </div>
           <div style="display:flex;gap:8px;align-items:center;">
-            <button class="tool-compare-btn ${isInCompare ? 'added' : ''}" onclick="event.stopPropagation();toggleCompare('${tool.name}','${tool.icon}','${tool.desc}','${tool.url}')" title="${isInCompare ? 'حذف از مقایسه' : 'افزودن به مقایسه'}">⚖️</button>
+            <div class="tooltip-wrapper" data-tooltip="${isInCompare ? 'حذف از مقایسه' : 'افزودن به مقایسه'}">
+              <button class="tool-compare-btn ${isInCompare ? 'added' : ''}" onclick="event.stopPropagation();toggleCompare('${tool.name}','${tool.icon}','${tool.desc}','${tool.url}')">⚖️</button>
+            </div>
             <a href="${tool.url}" target="_blank" class="tool-visit">مشاهده →</a>
           </div>
         </div>
@@ -1815,15 +1854,33 @@ function showHome() {
 // ═══════════════════════════════════════════
 let compareList = []; // max 2 items
 
+// Toast notification
+let toastTimeout = null;
+function showToast(icon, text) {
+  const toast = document.getElementById('toast');
+  const toastIcon = document.getElementById('toastIcon');
+  const toastText = document.getElementById('toastText');
+  toastIcon.textContent = icon;
+  toastText.textContent = text;
+  toast.classList.add('show');
+  if (toastTimeout) clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => toast.classList.remove('show'), 2200);
+}
+
 function toggleCompare(name, icon, desc, url) {
   const idx = compareList.findIndex(c => c.name === name);
   if (idx > -1) {
     compareList.splice(idx, 1);
+    showToast('🗑️', `${name} از مقایسه حذف شد`);
   } else {
     if (compareList.length >= 2) {
       compareList.shift(); // remove first if full
+      showToast('🔄', `${compareList[0]?.name || name} جایگزین شد`);
     }
     compareList.push({ name, icon, desc, url });
+    if (compareList.length <= 2) {
+      showToast('✅', `${name} به مقایسه اضافه شد — ${compareList.length}/2`);
+    }
   }
   renderCompareTray();
   // re-render current tools list to update button states
