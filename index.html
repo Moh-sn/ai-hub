@@ -553,7 +553,7 @@
     .badge-beginner { background: rgba(59,130,246,0.15); color: #60a5fa; }
     .badge-pro { background: rgba(168,85,247,0.15); color: #c084fc; }
     .tool-visit {
-      padding: 7px 16px;
+      padding: 5px 14px;
       background: var(--brand);
       color: white;
       border: none;
@@ -565,6 +565,8 @@
       transition: all var(--transition);
       white-space: nowrap;
       font-family: inherit;
+      min-height: auto;
+      max-width: fit-content;
     }
     .tool-visit:hover {
       background: var(--brand-light);
@@ -2124,9 +2126,13 @@
 
     /* ─── UX IMPROVEMENTS ─── */
     /* Better touch targets for mobile */
-    .filter-btn, .tool-visit, .fav-btn, .tool-compare-btn, .wizard-option, .category-card {
+    .filter-btn, .fav-btn, .tool-compare-btn, .wizard-option, .category-card {
       min-height: 44px;
       min-width: 44px;
+    }
+    .tool-visit {
+      min-height: auto;
+      min-width: auto;
     }
 
     /* Smoother transitions */
