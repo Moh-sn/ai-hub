@@ -1579,6 +1579,252 @@
       color: var(--text-primary);
     }
 
+    /* ─── ROADMAP ─── */
+    .roadmap-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 450;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .roadmap-overlay.show { display: flex; }
+    .roadmap-panel {
+      width: 100%;
+      max-width: 700px;
+      max-height: 85vh;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      animation: modalIn 0.3s ease-out;
+    }
+    .roadmap-header {
+      position: sticky;
+      top: 0;
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1;
+    }
+    .roadmap-title {
+      font-size: 18px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .roadmap-close {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+    }
+    .roadmap-close:hover {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: white;
+    }
+    .roadmap-body {
+      padding: 24px;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .roadmap-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+    .roadmap-result { display: none; }
+    .roadmap-result.show { display: block; }
+    .roadmap-result-header {
+      text-align: center;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .roadmap-result-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .roadmap-result-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .roadmap-timeline {
+      position: relative;
+    }
+    .roadmap-step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 8px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+    }
+    .roadmap-step.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .roadmap-step-connector {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .roadmap-step-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--brand);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .roadmap-step-line {
+      width: 2px;
+      flex: 1;
+      min-height: 20px;
+      background: var(--border-light);
+      margin-top: 4px;
+    }
+    .roadmap-step-content {
+      flex: 1;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin-bottom: 8px;
+    }
+    .roadmap-step-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .roadmap-step-icon {
+      font-size: 22px;
+    }
+    .roadmap-step-title {
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .roadmap-step-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+    .roadmap-step-tool {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .roadmap-tool-name {
+      padding: 4px 10px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--brand-light);
+    }
+    .roadmap-install-btn {
+      padding: 4px 10px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 11px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-family: inherit;
+      transition: all var(--transition);
+    }
+    .roadmap-install-btn:hover {
+      border-color: var(--brand);
+      color: var(--brand-light);
+    }
+    .roadmap-link-btn {
+      padding: 4px 10px;
+      background: var(--brand);
+      color: white;
+      border-radius: var(--radius-sm);
+      font-size: 11px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+    .roadmap-link-btn:hover {
+      background: var(--brand-light);
+    }
+    .roadmap-step-tip {
+      font-size: 12px;
+      color: var(--text-muted);
+      padding: 8px 12px;
+      background: var(--brand-glow);
+      border-radius: var(--radius-sm);
+      line-height: 1.6;
+    }
+    .roadmap-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .roadmap-action-btn {
+      padding: 10px 24px;
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all var(--transition);
+      border: none;
+    }
+    .roadmap-action-primary {
+      background: var(--brand);
+      color: white;
+    }
+    .roadmap-action-primary:hover {
+      background: var(--brand-light);
+    }
+    .roadmap-action-secondary {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+    .roadmap-action-secondary:hover {
+      border-color: var(--brand);
+      color: var(--text-primary);
+    }
+
     /* ─── KEYFRAMES ─── */
     @keyframes slideUp {
       from { transform: translateY(100%); opacity: 0; }
@@ -2086,6 +2332,16 @@
       .install-body { padding: 16px; }
       .install-cmd { font-size: 13px; padding: 12px 14px; }
 
+      /* Roadmap mobile */
+      .roadmap-overlay { padding: 0; align-items: flex-end; }
+      .roadmap-panel { border-radius: var(--radius-lg) var(--radius-lg) 0 0; max-height: 90vh; }
+      .roadmap-body { padding: 16px; }
+      .roadmap-step-content { padding: 12px; }
+      .roadmap-step-header { gap: 8px; }
+      .roadmap-step-icon { font-size: 18px; }
+      .roadmap-step-title { font-size: 14px; }
+      .roadmap-step-tool { gap: 6px; }
+
       .shortcuts-panel { max-width: 100%; margin: 0 16px; }
 
       .help-panel { max-width: 100%; margin: 0 16px; }
@@ -2114,6 +2370,7 @@
         <a class="nav-link" onclick="scrollToSection('categories')">دسته‌بندی‌ها</a>
       </nav>
       <div style="display:flex;align-items:center;gap:8px;">
+        <button class="help-btn" onclick="openRoadmap()" title="مسیر یادگیری" style="font-size:16px;">🗺️</button>
         <button class="help-btn" onclick="openHelp()" title="راهنما">؟</button>
       </div>
     </div>
@@ -2399,6 +2656,21 @@
     </div>
   </div>
 
+  <!-- ═══ ROADMAP MODAL ═══ -->
+  <div class="roadmap-overlay" id="roadmapOverlay" onclick="closeRoadmap(event)">
+    <div class="roadmap-panel" onclick="event.stopPropagation()">
+      <div class="roadmap-header">
+        <div class="roadmap-title">🗺️ مسیر یادگیری هوشمند</div>
+        <button class="roadmap-close" onclick="closeRoadmap()">✕</button>
+      </div>
+      <div class="roadmap-body">
+        <div class="roadmap-subtitle">هدف، تجربه و بودجه‌ات رو بگو تا بهترین مسیر رو بهت پیشنهاد بدم</div>
+        <div id="roadmapWizard"></div>
+        <div class="roadmap-result" id="roadmapResult"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- ═══ MOBILE BOTTOM NAVBAR ═══ -->
   <nav class="mobile-nav" id="mobileNav">
     <div class="mobile-nav-inner">
@@ -2413,6 +2685,10 @@
       <button class="mobile-nav-item" onclick="mobileNavTo('categories', this)">
         <span class="mobile-nav-icon">📂</span>
         دسته‌ها
+      </button>
+      <button class="mobile-nav-item" onclick="openRoadmap()">
+        <span class="mobile-nav-icon">🗺️</span>
+        مسیر یادگیری
       </button>
       <button class="mobile-nav-item" onclick="openHelp()">
         <span class="mobile-nav-icon">❓</span>
@@ -3201,6 +3477,7 @@ document.addEventListener('keydown', e => {
     closeInstall();
     closeShortcuts();
     closeAdvancedFilter();
+    closeRoadmap();
   }
 });
 
@@ -3475,6 +3752,488 @@ function closeInstall(e) {
   if (e && e.target !== document.getElementById('installOverlay')) return;
   document.getElementById('installOverlay').classList.remove('show');
   document.body.style.overflow = '';
+}
+
+// ═══════════════════════════════════════════
+//  ROADMAP SYSTEM
+// ═══════════════════════════════════════════
+const roadmapData = {
+  coding: {
+    beginner: {
+      free: [
+        { step: 1, title: 'شروع با ChatGPT', icon: '💬', desc: 'با ChatGPT رایگان شروع کن تا مفاهیم پایه رو یاد بگیری', tool: 'ChatGPT', url: 'https://chat.openai.com', tip: 'هر روز یک سؤال بپرس و کد بزن' },
+        { step: 2, title: 'یادگیری Python', icon: '🐍', desc: 'زبان Python بهترین شروع برای مبتدی‌هاست', tool: null, url: 'https://www.python.org', tip: 'از ویدیوهای رایگان YouTube شروع کن' },
+        { step: 3, title: 'نصب Hermes Agent', icon: '🪐', desc: 'ایجنت هوشمند که کنارت کدنویسی می‌کنه', tool: 'Hermes Agent', url: 'https://github.com/NousResearch/hermes-agent', tip: 'با مدل رایگان شروع کن' },
+        { step: 4, title: 'اتصال 9Router', icon: '🔀', desc: 'دسترسی به 60+ پروایدر AI رایگان', tool: '9Router', url: 'https://9router.com', tip: 'پروایدرهای رایگان مثل iFlow و Qwen رو امتحان کن' },
+        { step: 5, title: 'اولین پروژه', icon: '🚀', desc: 'یه وب‌سایت ساده یا ربات تلگرام بساز', tool: null, url: null, tip: 'از پروژه‌های کوچک شروع کن' }
+      ],
+      any: [
+        { step: 1, title: 'شروع با ChatGPT Plus', icon: '💬', desc: 'ChatGPT Plus با GPT-4 بهترین شروعه', tool: 'ChatGPT Plus', url: 'https://chat.openai.com', tip: 'از Code Interpreter استفاده کن' },
+        { step: 2, title: 'یادگیری Python', icon: '🐍', desc: 'Python سریع‌ترین راه یادگیری برنامه‌نویسی', tool: null, url: 'https://www.python.org', tip: 'هر روز 30 دقیقه تمرین کن' },
+        { step: 3, title: 'نصب Hermes Agent', icon: '🪐', desc: 'ایجنت هوشمند با Claude یا GPT-4', tool: 'Hermes Agent', url: 'https://github.com/NousResearch/hermes-agent', tip: 'از Anthropic API استفاده کن' },
+        { step: 4, title: 'استفاده از Claude Code', icon: '🧠', desc: 'بهترین ایجنت کدنویسی حرفه‌ای', tool: 'Claude Code', url: 'https://docs.anthropic.com/en/docs/claude-code', tip: 'با پروژه‌های واقعی تمرین کن' },
+        { step: 5, title: 'ساخت پورتفولیو', icon: '💼', desc: 'پروژه‌هات رو GitHub بذار', tool: null, url: 'https://github.com', tip: 'هر هفته یک پروژه جدید بساز' }
+      ]
+    },
+    pro: {
+      free: [
+        { step: 1, title: 'تنظیم 9Router', icon: '🔀', desc: 'دسترسی سریع به همه مدل‌ها', tool: '9Router', url: 'https://9router.com', tip: 'Fallback chain تنظیم کن' },
+        { step: 2, title: 'نصب Hermes Agent', icon: '🪐', desc: 'ایجنت چندمنظوره با حافظه پایدار', tool: 'Hermes Agent', url: 'https://github.com/NousResearch/hermes-agent', tip: 'MCP servers رو اضافه کن' },
+        { step: 3, title: 'استفاده از Aider', icon: '🔧', desc: 'ویرایش چند فایل با AI', tool: 'Aider', url: 'https://aider.chat', tip: 'با مدل رایگان شروع کن' },
+        { step: 4, title: 'اتصال Ollama', icon: '🦙', desc: 'مدل‌های متن‌باز روی کامپیوتر شخصی', tool: 'Ollama', url: 'https://ollama.com', tip: 'Llama 3 رو دانلود کن' },
+        { step: 5, title: 'پروژه حرفه‌ای', icon: '🏗️', desc: 'یه SaaS یا اپ بساز', tool: null, url: null, tip: 'از GitHub Copilot استفاده کن' }
+      ],
+      any: [
+        { step: 1, title: 'GitHub Copilot', icon: '🐙', desc: 'تکمیل خودکار کد در VS Code', tool: 'GitHub Copilot', url: 'https://github.com/features/copilot', tip: 'از Tab Autocomplete استفاده کن' },
+        { step: 2, title: 'Claude Code', icon: '🧠', desc: 'ایجنت کدنویسی ترمینال‌محور', tool: 'Claude Code', url: 'https://docs.anthropic.com/en/docs/claude-code', tip: 'CLAUDE.md بساز' },
+        { step: 3, title: 'Hermes Agent', icon: '🪐', desc: 'ایجنت چندپلتفرمه با حافظه', tool: 'Hermes Agent', url: 'https://github.com/NousResearch/hermes-agent', tip: 'Skills بساز' },
+        { step: 4, title: 'Cursor IDE', icon: '⚡', desc: 'IDE هوشمند با AI داخلی', tool: 'Cursor', url: 'https://cursor.sh', tip: 'Chat و Composer رو امتحان کن' },
+        { step: 5, title: 'پروژه SaaS', icon: '🚀', desc: 'یه محصول واقعی بساز و بفروش', tool: null, url: null, tip: 'از Next.js استفاده کن' }
+      ]
+    }
+  },
+  image: {
+    beginner: {
+      free: [
+        { step: 1, title: 'شروع با Canva AI', icon: '🖼️', desc: 'ساده‌ترین ابزار طراحی با AI', tool: 'Canva AI', url: 'https://canva.com', tip: 'از قالب‌های آماده استفاده کن' },
+        { step: 2, title: 'تولید عکس با DALL-E 3', icon: '🎨', desc: 'تولید عکس از متن در ChatGPT', tool: 'DALL-E 3', url: 'https://chat.openai.com', tip: 'پرامپت‌های دقیق بنویس' },
+        { step: 3, title: 'یادگیری Midjourney', icon: '🖌️', desc: 'بهترین کیفیت تصویر هنری', tool: 'Midjourney', url: 'https://midjourney.com', tip: 'از /imagine استفاده کن' },
+        { step: 4, title: 'آشنایی با Flux', icon: '⚡', desc: 'تولید عکس رایگان و سریع', tool: 'Flux', url: 'https://flux.ai', tip: 'پرامپت‌های ساده امتحان کن' },
+        { step: 5, title: 'ساخت پورتفولیو', icon: '💼', desc: 'بهترین کارهات رو نشون بده', tool: null, url: 'https://dribbble.com', tip: 'هر روز یک طراحی جدید' }
+      ],
+      any: [
+        { step: 1, title: 'Midjourney', icon: '🖌️', desc: 'بهترین کیفیت تصویر هنری', tool: 'Midjourney', url: 'https://midjourney.com', tip: 'از --style raw استفاده کن' },
+        { step: 2, title: 'DALL-E 3', icon: '🎨', desc: 'تولید عکس از متن', tool: 'DALL-E 3', url: 'https://chat.openai.com', tip: 'توضیحات دقیق بنویس' },
+        { step: 3, title: 'Leonardo AI', icon: '🎭', desc: 'ابزار حرفه‌ای تولید تصویر', tool: 'Leonardo AI', url: 'https://leonardo.ai', tip: 'از مدل‌های مختلف استفاده کن' },
+        { step: 4, title: 'Canva AI', icon: '🖼️', desc: 'طراحی سریع با قالب', tool: 'Canva AI', url: 'https://canva.com', tip: 'Brand Kit بساز' },
+        { step: 5, title: 'ساخت برند شخصی', icon: '✨', desc: 'لوگو و هویت بصری بساز', tool: null, url: null, tip: 'از Ideogram برای لوگو استفاده کن' }
+      ]
+    },
+    pro: {
+      free: [
+        { step: 1, title: 'Stable Diffusion', icon: '🌀', desc: 'مدل متن‌باز قابل اجرا روی کامپیوتر', tool: 'Stable Diffusion', url: 'https://stability.ai', tip: 'Automatic1111 نصب کن' },
+        { step: 2, title: 'Flux', icon: '⚡', desc: 'تولید عکس سریع و باکیفیت', tool: 'Flux', url: 'https://flux.ai', tip: 'از Replicate استفاده کن' },
+        { step: 3, title: 'Hugging Face', icon: '🤗', desc: 'هزاران مدل تصویری', tool: 'Hugging Face', url: 'https://huggingface.co', tip: 'Spaces رو امتحان کن' },
+        { step: 4, title: 'ComfyUI', icon: '🔧', desc: 'رابط گرافیکی برای Stable Diffusion', tool: null, url: 'https://github.com/comfyanonymous/ComfyUI', tip: 'Workflow بساز' },
+        { step: 5, title: 'فروش آثار', icon: '💰', desc: 'طراحی‌هات رو بفروش', tool: null, url: 'https://etsy.com', tip: 'Print on Demand امتحان کن' }
+      ],
+      any: [
+        { step: 1, title: 'Midjourney Pro', icon: '🖌️', desc: 'حرفه‌ای‌ترین ابزار تصویر', tool: 'Midjourney', url: 'https://midjourney.com', tip: 'از --chaos و --stylize استفاده کن' },
+        { step: 2, title: 'Stable Diffusion', icon: '🌀', desc: 'مدل متن‌باز برای کنترل کامل', tool: 'Stable Diffusion', url: 'https://stability.ai', tip: 'LoRA ترین کن' },
+        { step: 3, title: 'DALL-E 3 API', icon: '🎨', desc: 'تولید خودکار تصویر', tool: 'DALL-E 3', url: 'https://openai.com/api', tip: 'API integration بزن' },
+        { step: 4, title: 'Ideogram', icon: '📝', desc: 'تولید عکس با متن دقیق', tool: 'Ideogram', url: 'https://ideogram.ai', tip: 'برای لوگو عالیه' },
+        { step: 5, title: 'آژانس طراحی', icon: '🏢', desc: '服务 طراحی با AI بزن', tool: null, url: null, tip: 'قیمت‌گذاری رقابتی' }
+      ]
+    }
+  },
+  video: {
+    beginner: {
+      free: [
+        { step: 1, title: 'شروع با CapCut AI', icon: '✂️', desc: 'ویرایش ویدیو با AI رایگان', tool: 'CapCut AI', url: 'https://capcut.com', tip: 'از قالب‌های آماده استفاده کن' },
+        { step: 2, title: 'تولید ویدیو با Pika', icon: '🎬', desc: 'تبدیل عکس به ویدیو', tool: 'Pika', url: 'https://pika.art', tip: 'عکس‌های ساده امتحان کن' },
+        { step: 3, title: 'آشنایی با Kling', icon: '🎭', desc: 'تولید ویدیوی واقع‌گرایانه', tool: 'Kling', url: 'https://klingai.com', tip: ' prompts کوتاه بنویس' },
+        { step: 4, title: 'یادگیری Runway ML', icon: '🏃', desc: 'ابزار حرفه‌ای تولید ویدیو', tool: 'Runway ML', url: 'https://runwayml.com', tip: 'Gen-2 رو امتحان کن' },
+        { step: 5, title: 'ساخت کانال YouTube', icon: '📺', desc: 'محتوات رو منتشر کن', tool: null, url: 'https://youtube.com', tip: 'هر هفته یک ویدیو بذار' }
+      ],
+      any: [
+        { step: 1, title: 'Runway ML', icon: '🏃', desc: 'بهترین ابزار تولید ویدیو', tool: 'Runway ML', url: 'https://runwayml.com', tip: 'Motion Brush رو امتحان کن' },
+        { step: 2, title: 'Sora', icon: '🌟', desc: 'تولید ویدیوی OpenAI', tool: 'Sora', url: 'https://sora.com', tip: ' prompts دقیق بنویس' },
+        { step: 3, title: 'CapCut AI', icon: '✂️', desc: 'ویرایش سریع با AI', tool: 'CapCut AI', url: 'https://capcut.com', tip: 'Auto Captions فعال کن' },
+        { step: 4, title: 'Synthesia', icon: '🧑', desc: 'ویدیو با آواتار AI', tool: 'Synthesia', url: 'https://synthesia.io', tip: 'برای آموزش عالیه' },
+        { step: 5, title: 'آژانس تولید محتوا', icon: '🏢', desc: '服务 تولید محتوا بزن', tool: null, url: null, tip: 'قیمت‌گذاری اشتراکی' }
+      ]
+    },
+    pro: {
+      free: [
+        { step: 1, title: 'Kling AI', icon: '🎭', desc: 'تولید ویدیوی رایگان', tool: 'Kling', url: 'https://klingai.com', tip: 'مدل 1.6 رو استفاده کن' },
+        { step: 2, title: 'Pika', icon: '🎬', desc: 'تبدیل عکس به ویدیو', tool: 'Pika', url: 'https://pika.art', tip: 'Effects جدید رو امتحان کن' },
+        { step: 3, title: 'Higgsfield', icon: '⚡', desc: 'تولید ویدیوی واقع‌گرایانه', tool: 'Higgsfield', url: 'https://higgsfield.ai', tip: 'Character Consistency' },
+        { step: 4, title: 'ComfyUI Video', icon: '🔧', desc: 'تولید ویدیو با Stable Diffusion', tool: null, url: 'https://github.com/comfyanonymous/ComfyUI', tip: 'AnimateDiff رو امتحان کن' },
+        { step: 5, title: 'فروش ویدیو', icon: '💰', desc: 'ویدیوهات رو بفروش', tool: null, url: 'https://shutterstock.com', tip: 'Stock footage آپلود کن' }
+      ],
+      any: [
+        { step: 1, title: 'Runway ML Gen-3', icon: '🏃', desc: 'حرفه‌ای‌ترین ابزار ویدیو', tool: 'Runway ML', url: 'https://runwayml.com', tip: 'Multi-motion Brush' },
+        { step: 2, title: 'Sora Pro', icon: '🌟', desc: 'تولید ویدیوی سینمایی', tool: 'Sora', url: 'https://sora.com', tip: 'scenes طولانی بساز' },
+        { step: 3, title: 'HeyGen', icon: '🧑', desc: 'آواتار ویدیویی', tool: 'HeyGen', url: 'https://heygen.com', tip: 'Voice Cloning' },
+        { step: 4, title: 'CapCut Pro', icon: '✂️', desc: 'ویرایش حرفه‌ای', tool: 'CapCut AI', url: 'https://capcut.com', tip: 'AI Script to Video' },
+        { step: 5, title: 'آژانس ویدیو', icon: '🏢', desc: '服务 تولید ویدیو بزن', tool: null, url: null, tip: 'تبلیغات ویدیویی' }
+      ]
+    }
+  },
+  audio: {
+    beginner: {
+      free: [
+        { step: 1, title: 'شروع با Suno', icon: '🎵', desc: 'تولید موزیک با AI رایگان', tool: 'Suno', url: 'https://suno.com', tip: 'ژانر مورد علاقت رو انتخاب کن' },
+        { step: 2, title: 'آشنایی با Udio', icon: '🎶', desc: 'موزیک با کیفیت بالا', tool: 'Udio', url: 'https://udio.com', tip: 'lyrics بنویس' },
+        { step: 3, title: 'تولید صدا با ElevenLabs', icon: '🎙️', desc: 'تبدیل متن به گفتار', tool: 'ElevenLabs', url: 'https://elevenlabs.io', tip: 'صداهای مختلف رو امتحان کن' },
+        { step: 4, title: 'یادگیری Riffusion', icon: '🎸', desc: 'تولید موزیک از تصویر', tool: 'Riffusion', url: 'https://riffusion.com', tip: 'spectrograms رو ببین' },
+        { step: 5, title: 'ساخت پادکست', icon: '🎙️', desc: 'پادکستت رو شروع کن', tool: null, url: 'https://spotify.com', tip: 'هر هفته یک قسمت' }
+      ],
+      any: [
+        { step: 1, title: 'Suno Pro', icon: '🎵', desc: 'بهترین تولید موزیک', tool: 'Suno', url: 'https://suno.com', tip: 'Custom Mode استفاده کن' },
+        { step: 2, title: 'ElevenLabs', icon: '🎙️', desc: 'حرفه‌ای‌ترین TTS', tool: 'ElevenLabs', url: 'https://elevenlabs.io', tip: 'Voice Cloning' },
+        { step: 3, title: 'Udio', icon: '🎶', desc: 'موزیک با کیفیت بالا', tool: 'Udio', url: 'https://udio.com', tip: ' stems جدا کن' },
+        { step: 4, title: 'AIVA', icon: '🤖', desc: 'آهنگسازی حرفه‌ای', tool: 'AIVA', url: 'https://aiva.ai', tip: 'سبک مورد نظر رو انتخاب کن' },
+        { step: 5, title: 'استودیو خانگی', icon: '🏠', desc: 'استودیو ضبط بزن', tool: null, url: null, tip: 'از GarageBand شروع کن' }
+      ]
+    },
+    pro: {
+      free: [
+        { step: 1, title: 'Bark', icon: '🐕', desc: 'تولید صدا متن‌باز', tool: 'Bark', url: 'https://github.com/suno-ai/bark', tip: 'GPU لازمه' },
+        { step: 2, title: 'Riffusion', icon: '🎸', desc: 'تولید موزیک از تصویر', tool: 'Riffusion', url: 'https://riffusion.com', tip: 'API استفاده کن' },
+        { step: 3, title: 'Suno API', icon: '🎵', desc: 'تولید خودکار موزیک', tool: 'Suno', url: 'https://suno.com', tip: 'Automation بزن' },
+        { step: 4, title: 'Whisper', icon: '🤫', desc: 'تبدیل گفتار به متن', tool: null, url: 'https://github.com/openai/whisper', tip: 'Large-v3 استفاده کن' },
+        { step: 5, title: 'سرویس صوتی', icon: '🏢', desc: '服务 صوتی بزن', tool: null, url: null, tip: ' audiobooks' }
+      ],
+      any: [
+        { step: 1, title: 'ElevenLabs Pro', icon: '🎙️', desc: 'حرفه‌ای‌ترین TTS', tool: 'ElevenLabs', url: 'https://elevenlabs.io', tip: 'Projects بساز' },
+        { step: 2, title: 'Suno Pro', icon: '🎵', desc: 'تولید موزیک حرفه‌ای', tool: 'Suno', url: 'https://suno.com', tip: 'Stems دانلود کن' },
+        { step: 3, title: 'AIVA', icon: '🤖', desc: 'آهنگسازی سینمایی', tool: 'AIVA', url: 'https://aiva.ai', tip: 'Soundtracks بساز' },
+        { step: 4, title: 'Udio Pro', icon: '🎶', desc: 'موزیک با کیفیت بالا', tool: 'Udio', url: 'https://udio.com', tip: 'Remix کن' },
+        { step: 5, title: 'لیبل موزیک', icon: '🏢', desc: 'لیبل موزیک بزن', tool: null, url: null, tip: 'DistroKid استفاده کن' }
+      ]
+    }
+  },
+  text: {
+    beginner: {
+      free: [
+        { step: 1, title: 'شروع با ChatGPT', icon: '💬', desc: 'بهترین ابزار نوشتن رایگان', tool: 'ChatGPT', url: 'https://chat.openai.com', tip: 'دستورات دقیق بنویس' },
+        { step: 2, title: 'آشنایی با Claude', icon: '🧠', desc: 'نوشتن خلاقانه عالی', tool: 'Claude', url: 'https://claude.ai', tip: 'برای داستان عالیه' },
+        { step: 3, title: 'Grammarly', icon: '✍️', desc: 'بررسی و ویرایش متن', tool: 'Grammarly', url: 'https://grammarly.com', tip: 'afari extension نصب کن' },
+        { step: 4, title: 'Gemini', icon: '💎', desc: 'نوشتن با Gemini گوگل', tool: 'Gemini', url: 'https://gemini.google.com', tip: 'با Google Docs ادغام کن' },
+        { step: 5, title: 'شروع وبلاگ', icon: '📝', desc: 'وبلاگت رو راه بنداز', tool: null, url: 'https://wordpress.com', tip: 'هر هفته یک مقاله بنویس' }
+      ],
+      any: [
+        { step: 1, title: 'Claude Pro', icon: '🧠', desc: 'بهترین برای نوشتن', tool: 'Claude', url: 'https://claude.ai', tip: 'Projects بساز' },
+        { step: 2, title: 'ChatGPT Plus', icon: '💬', desc: 'نوشتن و تحقیق', tool: 'ChatGPT Plus', url: 'https://chat.openai.com', tip: 'Custom Instructions' },
+        { step: 3, title: 'Jasper', icon: '🤖', desc: 'نوشتن بازاریابی', tool: 'Jasper', url: 'https://jasper.ai', tip: 'Brand Voice بساز' },
+        { step: 4, title: 'Writesonic', icon: '⚡', desc: 'تولید محتوا سریع', tool: 'Writesonic', url: 'https://writesonic.com', tip: 'AI Article Writer' },
+        { step: 5, title: 'آژانس محتوا', icon: '🏢', desc: '服务 محتوا بزن', tool: null, url: null, tip: 'قیمت‌گذاری اشتراکی' }
+      ]
+    },
+    pro: {
+      free: [
+        { step: 1, title: 'Claude', icon: '🧠', desc: 'نوشتن حرفه‌ای', tool: 'Claude', url: 'https://claude.ai', tip: 'Artifacts استفاده کن' },
+        { step: 2, title: 'Gemini Advanced', icon: '💎', desc: 'نوشتن با Gemini', tool: 'Gemini', url: 'https://gemini.google.com', tip: 'Gems بساز' },
+        { step: 3, title: 'Grammarly Business', icon: '✍️', desc: 'بررسی تیمی', tool: 'Grammarly', url: 'https://grammarly.com', tip: 'Brand Tones' },
+        { step: 4, title: 'Notion AI', icon: '📋', desc: 'یادداشت‌برداری هوشمند', tool: null, url: 'https://notion.so', tip: 'AI databases' },
+        { step: 5, title: 'انتشار کتاب', icon: '📚', desc: 'کتابت رو منتشر کن', tool: null, url: 'https://kdp.amazon.com', tip: 'Kindle Direct Publishing' }
+      ],
+      any: [
+        { step: 1, title: 'Claude Projects', icon: '🧠', desc: 'نوشتن پروژه‌محور', tool: 'Claude Projects', url: 'https://claude.ai', tip: 'Knowledge base بساز' },
+        { step: 2, title: 'ChatGPT Teams', icon: '💬', desc: 'نوشتن تیمی', tool: 'ChatGPT Plus', url: 'https://chat.openai.com', tip: 'Shared workspaces' },
+        { step: 3, title: 'Jasper Enterprise', icon: '🤖', desc: 'نوشتن مقیاس‌پذیر', tool: 'Jasper', url: 'https://jasper.ai', tip: 'Campaign analytics' },
+        { step: 4, title: 'Copy.ai', icon: '📋', desc: 'تولید محتوای تبلیغاتی', tool: null, url: 'https://copy.ai', tip: 'Workflow builder' },
+        { step: 5, title: 'آژانس تبلیغات', icon: '🏢', desc: '服务 تبلیغات بزن', tool: null, url: null, tip: 'ROI tracking' }
+      ]
+    }
+  },
+  data: {
+    beginner: {
+      free: [
+        { step: 1, title: 'شروع با Julius AI', icon: '📊', desc: 'تحلیل داده با AI رایگان', tool: 'Julius AI', url: 'https://julius.ai', tip: 'فایل CSV آپلود کن' },
+        { step: 2, title: 'NotebookLM', icon: '📓', desc: 'تحلیل اسناد با AI', tool: 'NotebookLM', url: 'https://notebooklm.google.com', tip: 'فایل PDF اضافه کن' },
+        { step: 3, title: 'یادگیری Python', icon: '🐍', desc: 'برنامه‌نویسی برای تحلیل داده', tool: null, url: 'https://www.python.org', tip: 'Pandas و NumPy یاد بگیر' },
+        { step: 4, title: 'Google Sheets AI', icon: '📈', desc: 'تحلیل در اکسل', tool: null, url: 'https://sheets.google.com', tip: 'فرمول‌های AI' },
+        { step: 5, title: 'داشبورد داده', icon: '🎯', desc: 'داشبورد تعاملی بساز', tool: null, url: 'https://tableau.com', tip: 'Data visualization' }
+      ],
+      any: [
+        { step: 1, title: 'Julius AI Pro', icon: '📊', desc: 'تحلیل پیشرفته', tool: 'Julius AI', url: 'https://julius.ai', tip: 'Python scripts' },
+        { step: 2, title: 'Claude Projects', icon: '🧠', desc: 'تحلیل اسناد حرفه‌ای', tool: 'Claude Projects', url: 'https://claude.ai', tip: 'Knowledge base' },
+        { step: 3, title: 'NotebookLM Plus', icon: '📓', desc: 'تحلیل پیشرفته', tool: 'NotebookLM', url: 'https://notebooklm.google.com', tip: 'Sources متعدد' },
+        { step: 4, title: 'ChatGPT Advanced Data', icon: '💬', desc: 'تحلیل با Code Interpreter', tool: 'ChatGPT Plus', url: 'https://chat.openai.com', tip: 'Visualization' },
+        { step: 5, title: 'آژانس تحلیل داده', icon: '🏢', desc: '服务 تحلیل بزن', tool: null, url: null, tip: 'Industry focus' }
+      ]
+    },
+    pro: {
+      free: [
+        { step: 1, title: 'Python + Pandas', icon: '🐍', desc: 'برنامه‌نویسی تحلیل داده', tool: null, url: 'https://www.python.org', tip: 'Jupyter Notebook' },
+        { step: 2, title: 'Hugging Face', icon: '🤗', desc: 'مدل‌های تحلیل داده', tool: 'Hugging Face', url: 'https://huggingface.co', tip: 'Transformers library' },
+        { step: 3, title: 'Julius AI', icon: '📊', desc: 'تحلیل سریع', tool: 'Julius AI', url: 'https://julius.ai', tip: 'API integration' },
+        { step: 4, title: 'Google Colab', icon: '💻', desc: 'اجرا در ابر', tool: null, url: 'https://colab.research.google.com', tip: 'GPU رایگان' },
+        { step: 5, title: 'سرویس تحلیل داده', icon: '🏢', desc: '服务 تحلیل بزن', tool: null, url: null, tip: 'SaaS model' }
+      ],
+      any: [
+        { step: 1, title: 'Claude Projects', icon: '🧠', desc: 'تحلیل اسناد پیچیده', tool: 'Claude Projects', url: 'https://claude.ai', tip: 'Advanced analysis' },
+        { step: 2, title: 'Julius AI Enterprise', icon: '📊', desc: 'تحلیل سازمانی', tool: 'Julius AI', url: 'https://julius.ai', tip: 'Team features' },
+        { step: 3, title: 'ChatGPT Advanced', icon: '💬', desc: 'تحلیل پیشرفته', tool: 'ChatGPT Plus', url: 'https://chat.openai.com', tip: 'Data analysis' },
+        { step: 4, title: 'NotebookLM Business', icon: '📓', desc: 'تحلیل تیمی', tool: 'NotebookLM', url: 'https://notebooklm.google.com', tip: 'Collaboration' },
+        { step: 5, title: 'شرکت تحلیل داده', icon: '🏢', desc: 'شرکت تحلیل تأسیس کن', tool: null, url: null, tip: 'Enterprise clients' }
+      ]
+    }
+  },
+  agents: {
+    beginner: {
+      free: [
+        { step: 1, title: 'شروع با n8n', icon: '🔄', desc: 'اتوماسیون بدون کدنویسی', tool: 'n8n', url: 'https://n8n.io', tip: 'Workflowهای آماده' },
+        { step: 2, title: 'آشنایی با Make', icon: '🔧', desc: 'اتوماسیون بصری', tool: 'Make (Integromat)', url: 'https://make.com', tip: 'Templateها رو امتحان کن' },
+        { step: 3, title: 'Botpress', icon: '🤖', desc: 'ساخت چت‌بات', tool: 'Botpress', url: 'https://botpress.com', tip: 'Chatbot بساز' },
+        { step: 4, title: 'Hermes Agent', icon: '🪐', desc: 'ایجنت هوشمند', tool: 'Hermes Agent', url: 'https://github.com/NousResearch/hermes-agent', tip: 'Skills بساز' },
+        { step: 5, title: 'اولین ربات', icon: '🚀', desc: 'یه ربات تلگرام بساز', tool: null, url: null, tip: 'Python-Telegram-Bot' }
+      ],
+      any: [
+        { step: 1, title: 'n8n Pro', icon: '🔄', desc: 'اتوماسیون حرفه‌ای', tool: 'n8n', url: 'https://n8n.io', tip: 'Self-hosted' },
+        { step: 2, title: 'Make Pro', icon: '🔧', desc: 'اتوماسیون پیشرفته', tool: 'Make (Integromat)', url: 'https://make.com', tip: 'Advanced routing' },
+        { step: 3, title: 'Hermes Agent', icon: '🪐', desc: 'ایجنت چندمنظوره', tool: 'Hermes Agent', url: 'https://github.com/NousResearch/hermes-agent', tip: 'Multi-platform' },
+        { step: 4, title: 'AutoGPT', icon: '🤖', desc: 'ایجنت خودمختار', tool: 'AutoGPT', url: 'https://github.com/Significant-Gravitas/AutoGPT', tip: 'Goals تعریف کن' },
+        { step: 5, title: 'آژانس اتوماسیون', icon: '🏢', desc: '服务 اتوماسیون بزن', tool: null, url: null, tip: ' consulting' }
+      ]
+    },
+    pro: {
+      free: [
+        { step: 1, title: 'CrewAI', icon: '👥', desc: 'ایجنت‌های تیمی', tool: 'CrewAI', url: 'https://crewai.com', tip: 'Roles تعریف کن' },
+        { step: 2, title: 'n8n Self-hosted', icon: '🔄', desc: 'اتوماسیون کامل', tool: 'n8n', url: 'https://n8n.io', tip: 'Custom nodes' },
+        { step: 3, title: 'Hermes Agent', icon: '🪐', desc: 'ایجنت چندپلتفرمه', tool: 'Hermes Agent', url: 'https://github.com/NousResearch/hermes-agent', tip: 'Plugins' },
+        { step: 4, title: 'LangChain', icon: '🔗', desc: 'چارچوب ایجنت', tool: null, url: 'https://langchain.com', tip: 'Agents بساز' },
+        { step: 5, title: 'پلتفرم اتوماسیون', icon: '🏢', desc: 'پلتفرم بزن', tool: null, url: null, tip: 'SaaS model' }
+      ],
+      any: [
+        { step: 1, title: 'CrewAI Enterprise', icon: '👥', desc: 'ایجنت‌های حرفه‌ای', tool: 'CrewAI', url: 'https://crewai.com', tip: 'Multi-agent' },
+        { step: 2, title: 'Hermes Agent Pro', icon: '🪐', desc: 'ایجنت پیشرفته', tool: 'Hermes Agent', url: 'https://github.com/NousResearch/hermes-agent', tip: 'Custom skills' },
+        { step: 3, title: 'Dify', icon: '🔧', desc: 'پلتفرم ایجنت', tool: 'Dify', url: 'https://dify.ai', tip: 'Workflow builder' },
+        { step: 4, title: 'Botpress Enterprise', icon: '🤖', desc: 'چت‌بات سازمانی', tool: 'Botpress', url: 'https://botpress.com', tip: 'Omnichannel' },
+        { step: 5, title: 'شرکت اتوماسیون', icon: '🏢', desc: 'شرکت اتوماسیون تأسیس کن', tool: null, url: null, tip: 'Enterprise sales' }
+      ]
+    }
+  },
+  search: {
+    beginner: {
+      free: [
+        { step: 1, title: 'شروع با Perplexity', icon: '🔍', desc: 'بهترین موتور جستجوی AI', tool: 'Perplexity', url: 'https://perplexity.ai', tip: 'Focus modes رو امتحان کن' },
+        { step: 2, title: 'آشنایی با Phind', icon: '💻', desc: 'جستجوی کدنویسی', tool: 'Phind', url: 'https://phind.com', tip: 'برای کدنویسی عالیه' },
+        { step: 3, title: 'Gemini Search', icon: '💎', desc: 'جستجوی گوگل با AI', tool: 'Gemini Search', url: 'https://gemini.google.com', tip: 'With Google integration' },
+        { step: 4, title: 'You.com', icon: '🌐', desc: 'جستجوی شخصی', tool: 'You.com', url: 'https://you.com', tip: 'Personalization' },
+        { step: 5, title: 'تحقیق حرفه‌ای', icon: '📚', desc: 'تحقیق عمیق انجام بده', tool: null, url: null, tip: 'Multiple sources' }
+      ],
+      any: [
+        { step: 1, title: 'Perplexity Pro', icon: '🔍', desc: 'جستجوی حرفه‌ای', tool: 'Perplexity', url: 'https://perplexity.ai', tip: 'Pro Search' },
+        { step: 2, title: 'Phind Pro', icon: '💻', desc: 'جستجوی پیشرفته کد', tool: 'Phind', url: 'https://phind.com', tip: 'Code generation' },
+        { step: 3, title: 'Kagi', icon: '🔒', desc: 'جستجوی خصوصی', tool: 'Kagi', url: 'https://kagi.com', tip: 'No ads' },
+        { step: 4, title: 'Gemini Advanced', icon: '💎', desc: 'جستجوی پیشرفته', tool: 'Gemini', url: 'https://gemini.google.com', tip: 'Deep research' },
+        { step: 5, title: 'آژانس تحقیق', icon: '🏢', desc: '服务 تحقیق بزن', tool: null, url: null, tip: 'Market research' }
+      ]
+    },
+    pro: {
+      free: [
+        { step: 1, title: 'Perplexity API', icon: '🔍', desc: 'جستجوی خودکار', tool: 'Perplexity', url: 'https://perplexity.ai', tip: 'API integration' },
+        { step: 2, title: 'Phind Enterprise', icon: '💻', desc: 'جستجوی سازمانی', tool: 'Phind', url: 'https://phind.com', tip: 'Team features' },
+        { step: 3, title: 'Kagi Search', icon: '🔒', desc: 'جستجوی بدون تبلیغ', tool: 'Kagi', url: 'https://kagi.com', tip: 'Custom AI' },
+        { step: 4, title: 'Exa AI', icon: '⚡', desc: 'جستجوی معنایی', tool: null, url: 'https://exa.ai', tip: 'Semantic search' },
+        { step: 5, title: 'پلتفرم جستجو', icon: '🏢', desc: 'پلتفرم جستجو بزن', tool: null, url: null, tip: 'Vertical search' }
+      ],
+      any: [
+        { step: 1, title: 'Perplexity Enterprise', icon: '🔍', desc: 'جستجوی سازمانی', tool: 'Perplexity', url: 'https://perplexity.ai', tip: 'Collaboration' },
+        { step: 2, title: 'Kagi Team', icon: '🔒', desc: 'جستجوی تیمی', tool: 'Kagi', url: 'https://kagi.com', tip: 'Shared results' },
+        { step: 3, title: 'Gemini Business', icon: '💎', desc: 'جستجوی تجاری', tool: 'Gemini', url: 'https://gemini.google.com', tip: 'Workspace integration' },
+        { step: 4, title: 'Tavily', icon: '🤖', desc: 'جستجوی AI-native', tool: null, url: 'https://tavily.com', tip: 'For AI agents' },
+        { step: 5, title: 'شرکت جستجو', icon: '🏢', desc: 'شرکت جستجو تأسیس کن', tool: null, url: null, tip: 'Enterprise search' }
+      ]
+    }
+  },
+  platforms: {
+    beginner: {
+      free: [
+        { step: 1, title: 'شروع با Hugging Face', icon: '🤗', desc: 'بزرگترین مخزن مدل‌ها', tool: 'Hugging Face', url: 'https://huggingface.co', tip: 'Spaces رو امتحان کن' },
+        { step: 2, title: 'آشنایی با Ollama', icon: '🦙', desc: 'مدل‌ها روی کامپیوتر شخصی', tool: 'Ollama', url: 'https://ollama.com', tip: 'Llama 3 نصب کن' },
+        { step: 3, title: 'LM Arena', icon: '🏟️', desc: 'مقایسه مدل‌ها', tool: 'LM Arena', url: 'https://lmarena.ai', tip: 'رای بده' },
+        { step: 4, title: 'Groq', icon: '⚡', desc: 'اجرای سریع مدل‌ها', tool: 'Groq', url: 'https://groq.com', tip: 'سرعت بالا' },
+        { step: 5, title: 'اولین مدل', icon: '🎯', desc: 'مدل خودت رو بساز', tool: null, url: null, tip: 'Fine-tuning' }
+      ],
+      any: [
+        { step: 1, title: 'Hugging Face Pro', icon: '🤗', desc: 'دسترسی کامل', tool: 'Hugging Face', url: 'https://huggingface.co', tip: 'Inference API' },
+        { step: 2, title: 'OpenRouter', icon: '🔀', desc: 'دسترسی به همه مدل‌ها', tool: 'OpenRouter', url: 'https://openrouter.ai', tip: 'Cost optimization' },
+        { step: 3, title: 'Together AI', icon: '🤝', desc: 'اجرای مدل‌های متن‌باز', tool: 'Together AI', url: 'https://together.ai', tip: 'Fine-tuning' },
+        { step: 4, title: 'Replicate', icon: '☁️', desc: 'اجرای مدل در ابر', tool: 'Replicate', url: 'https://replicate.com', tip: 'API integration' },
+        { step: 5, title: 'سرویس AI', icon: '🏢', desc: '服务 AI بزن', tool: null, url: null, tip: 'API as a service' }
+      ]
+    },
+    pro: {
+      free: [
+        { step: 1, title: 'Ollama + Open WebUI', icon: '🦙', desc: 'اجرای محلی مدل‌ها', tool: 'Ollama', url: 'https://ollama.com', tip: 'Local deployment' },
+        { step: 2, title: 'Hugging Face Spaces', icon: '🤗', desc: 'استقرار مدل‌ها', tool: 'Hugging Face', url: 'https://huggingface.co', tip: 'Gradio apps' },
+        { step: 3, title: 'Groq API', icon: '⚡', desc: 'اجرای سریع', tool: 'Groq', url: 'https://groq.com', tip: 'High throughput' },
+        { step: 4, title: 'Together AI API', icon: '🤝', desc: 'Fine-tuning', tool: 'Together AI', url: 'https://together.ai', tip: 'Custom models' },
+        { step: 5, title: 'پلتفرم مدل', icon: '🏢', desc: 'پلتفرم مدل بزن', tool: null, url: null, tip: 'Model marketplace' }
+      ],
+      any: [
+        { step: 1, title: 'OpenRouter Pro', icon: '🔀', desc: 'مدیریت مدل‌ها', tool: 'OpenRouter', url: 'https://openrouter.ai', tip: 'Advanced routing' },
+        { step: 2, title: 'Replicate Pro', icon: '☁️', desc: 'استقرار حرفه‌ای', tool: 'Replicate', url: 'https://replicate.com', tip: 'Custom models' },
+        { step: 3, title: 'Together AI Enterprise', icon: '🤝', desc: 'Fine-tuning سازمانی', tool: 'Together AI', url: 'https://together.ai', tip: 'Private deployment' },
+        { step: 4, title: 'Hugging Face Enterprise', icon: '🤗', desc: 'مدیریت سازمانی', tool: 'Hugging Face', url: 'https://huggingface.co', tip: 'Inference Endpoints' },
+        { step: 5, title: 'شرکت AI', icon: '🏢', desc: 'شرکت AI تأسیس کن', tool: null, url: null, tip: 'AI infrastructure' }
+      ]
+    }
+  },
+  'agents-pro': {
+    beginner: {
+      free: [
+        { step: 1, title: 'شروع با 9Router', icon: '🔀', desc: 'دسترسی به 60+ پروایدر رایگان', tool: '9Router', url: 'https://9router.com', tip: 'npm install -g 9router' },
+        { step: 2, title: 'نصب Hermes Agent', icon: '🪐', desc: 'ایجنت هوشمند', tool: 'Hermes Agent', url: 'https://github.com/NousResearch/hermes-agent', tip: 'curl install script' },
+        { step: 3, title: 'آشنایی با Aider', icon: '🔧', desc: 'ایجنت کدنویسی متن‌باز', tool: 'Aider', url: 'https://aider.chat', tip: 'pip install aider-chat' },
+        { step: 4, title: 'Codex CLI', icon: '⚡', desc: 'ایجنت OpenAI', tool: 'OpenAI Codex', url: 'https://github.com/openai/codex', tip: 'npm install -g @openai/codex' },
+        { step: 5, title: 'اولین پروژه', icon: '🚀', desc: 'پروژه واقعی بساز', tool: null, url: null, tip: 'با ایجنت کدنویسی کن' }
+      ],
+      any: [
+        { step: 1, title: 'Hermes Agent', icon: '🪐', desc: 'ایجنت چندپلتفرمه', tool: 'Hermes Agent', url: 'https://github.com/NousResearch/hermes-agent', tip: 'Full setup' },
+        { step: 2, title: 'Claude Code', icon: '🧠', desc: 'ایجنت حرفه‌ای', tool: 'Claude Code', url: 'https://docs.anthropic.com/en/docs/claude-code', tip: 'CLAUDE.md' },
+        { step: 3, title: '9Router', icon: '🔀', desc: 'مدیریت پروایدرها', tool: '9Router', url: 'https://9router.com', tip: 'Cost optimization' },
+        { step: 4, title: 'Cursor IDE', icon: '⚡', desc: 'IDE هوشمند', tool: 'Cursor', url: 'https://cursor.sh', tip: 'AI features' },
+        { step: 5, title: 'آژانس توسعه', icon: '🏢', desc: '服务 توسعه بزن', tool: null, url: null, tip: 'AI-powered' }
+      ]
+    },
+    pro: {
+      free: [
+        { step: 1, title: 'Hermes Agent + 9Router', icon: '🪐', desc: 'ستاپ کامل', tool: 'Hermes Agent', url: 'https://github.com/NousResearch/hermes-agent', tip: 'Custom skills' },
+        { step: 2, title: 'Aider + Ollama', icon: '🔧', desc: 'ایجنت محلی', tool: 'Aider', url: 'https://aider.chat', tip: 'Local models' },
+        { step: 3, title: 'Codex CLI', icon: '⚡', desc: 'ایجنت OpenAI', tool: 'OpenAI Codex', url: 'https://github.com/openai/codex', tip: 'Sandbox' },
+        { step: 4, title: 'Claude Code + MCP', icon: '🧠', desc: 'ایجنت با ابزار', tool: 'Claude Code', url: 'https://docs.anthropic.com/en/docs/claude-code', tip: 'MCP servers' },
+        { step: 5, title: 'پلتفرم ایجنت', icon: '🏢', desc: 'پلتفرم ایجنت بزن', tool: null, url: null, tip: 'Agent marketplace' }
+      ],
+      any: [
+        { step: 1, title: 'Hermes Agent Enterprise', icon: '🪐', desc: 'ایجنت سازمانی', tool: 'Hermes Agent', url: 'https://github.com/NousResearch/hermes-agent', tip: 'Multi-user' },
+        { step: 2, title: 'Claude Code Teams', icon: '🧠', desc: 'ایجنت تیمی', tool: 'Claude Code', url: 'https://docs.anthropic.com/en/docs/claude-code', tip: 'Shared context' },
+        { step: 3, title: '9Router Enterprise', icon: '🔀', desc: 'مدیریت پیشرفته', tool: '9Router', url: 'https://9router.com', tip: 'Cost analytics' },
+        { step: 4, title: 'Cursor Business', icon: '⚡', desc: 'IDE تیمی', tool: 'Cursor', url: 'https://cursor.sh', tip: 'Team features' },
+        { step: 5, title: 'شرکت AI Agents', icon: '🏢', desc: 'شرکت ایجنت تأسیس کن', tool: null, url: null, tip: 'Enterprise sales' }
+      ]
+    }
+  }
+};
+
+let roadmapState = { step: 1, category: null, level: null, budget: null };
+
+function openRoadmap() {
+  roadmapState = { step: 1, category: null, level: null, budget: null };
+  renderRoadmapWizard();
+  document.getElementById('roadmapOverlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeRoadmap(e) {
+  if (e && e.target !== document.getElementById('roadmapOverlay')) return;
+  document.getElementById('roadmapOverlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+function renderRoadmapWizard() {
+  const container = document.getElementById('roadmapWizard');
+  const result = document.getElementById('roadmapResult');
+  result.classList.remove('show');
+
+  let html = '<div class="roadmap-steps">';
+
+  // Step indicators
+  for (let i = 1; i <= 3; i++) {
+    const numClass = i < roadmapState.step ? 'done' : i === roadmapState.step ? 'active' : '';
+    const label = i === 1 ? 'دسته‌بندی' : i === 2 ? 'سطح تجربه' : 'بودجه';
+    html += `<div class="wizard-step"><div class="step-num ${numClass}" id="rmStep${i}Num">${i < roadmapState.step ? '✓' : i}</div><span class="step-label ${i === roadmapState.step ? 'active' : ''}" id="rmStep${i}Label">${label}</span></div>`;
+  }
+  html += '</div>';
+
+  // Options
+  html += '<div class="wizard-options" id="roadmapOptions">';
+
+  if (roadmapState.step === 1) {
+    const catOptions = [
+      { id: 'coding', label: '🖥️ برنامه‌نویسی', category: 'coding' },
+      { id: 'image', label: '🎨 طراحی عکس', category: 'image' },
+      { id: 'video', label: '🎬 ساخت ویدیو', category: 'video' },
+      { id: 'audio', label: '🎵 صدا و موزیک', category: 'audio' },
+      { id: 'text', label: '✍️ نوشتن', category: 'text' },
+      { id: 'data', label: '📊 تحلیل داده', category: 'data' },
+      { id: 'agents', label: '🤖 اتوماسیون', category: 'agents' },
+      { id: 'search', label: '🔍 جستجو', category: 'search' },
+      { id: 'platforms', label: '🏗️ پلتفرم مدل', category: 'platforms' },
+      { id: 'agents-pro', label: '🛠️ ایجنت حرفه‌ای', category: 'agents-pro' }
+    ];
+    html += catOptions.map(opt => `<button class="wizard-option" onclick="roadmapSelect(1, '${opt.id}', '${opt.category}')">${opt.label}</button>`).join('');
+  } else if (roadmapState.step === 2) {
+    html += `<button class="wizard-option" onclick="roadmapSelect(2, 'beginner')">مبتدی 🌱</button>`;
+    html += `<button class="wizard-option" onclick="roadmapSelect(2, 'pro')">حرفه‌ای 🔥</button>`;
+  } else if (roadmapState.step === 3) {
+    html += `<button class="wizard-option" onclick="roadmapSelect(3, 'free')">رایگان 🆓</button>`;
+    html += `<button class="wizard-option" onclick="roadmapSelect(3, 'any')">فرقی نمیکنه 💰</button>`;
+  }
+
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+function roadmapSelect(step, value, category) {
+  if (step === 1) { roadmapState.category = category; roadmapState.step = 2; }
+  else if (step === 2) { roadmapState.level = value; roadmapState.step = 3; }
+  else if (step === 3) {
+    roadmapState.budget = value;
+    showRoadmapResult();
+    return;
+  }
+  renderRoadmapWizard();
+}
+
+function showRoadmapResult() {
+  const roadmap = roadmapData[roadmapState.category]?.[roadmapState.level]?.[roadmapState.budget];
+  if (!roadmap) {
+    document.getElementById('roadmapResult').innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-muted);">مسیری برای این ترکیب پیدا نشد 😔</div>';
+    document.getElementById('roadmapResult').classList.add('show');
+    return;
+  }
+
+  const catNames = {
+    'coding': 'برنامه‌نویسی', 'image': 'طراحی عکس', 'video': 'ساخت ویدیو',
+    'audio': 'صدا و موزیک', 'text': 'نوشتن', 'data': 'تحلیل داده',
+    'agents': 'اتوماسیون', 'search': 'جستجو', 'platforms': 'پلتفرم مدل',
+    'agents-pro': 'ایجنت حرفه‌ای'
+  };
+
+  let html = `<div class="roadmap-result-header">
+    <div class="roadmap-result-title">🎯 مسیر یادگیری ${catNames[roadmapState.category] || ''}</div>
+    <div class="roadmap-result-sub">${roadmapState.level === 'beginner' ? 'مبتدی 🌱' : 'حرفه‌ای 🔥'} • ${roadmapState.budget === 'free' ? 'رایگان 🆓' : 'همه بودجه 💰'}</div>
+  </div>`;
+
+  html += '<div class="roadmap-timeline">';
+
+  roadmap.forEach((item, i) => {
+    const toolInfo = item.tool ? categories.flatMap(c => c.tools).find(t => t.name === item.tool) : null;
+    const hasInstall = toolInfo?.installGuide;
+
+    html += `<div class="roadmap-step" style="animation-delay: ${i * 0.1}s">
+      <div class="roadmap-step-connector">
+        <div class="roadmap-step-number">${item.step}</div>
+        ${i < roadmap.length - 1 ? '<div class="roadmap-step-line"></div>' : ''}
+      </div>
+      <div class="roadmap-step-content">
+        <div class="roadmap-step-header">
+          <span class="roadmap-step-icon">${item.icon}</span>
+          <div class="roadmap-step-title">${item.title}</div>
+        </div>
+        <div class="roadmap-step-desc">${item.desc}</div>
+        ${item.tool ? `<div class="roadmap-step-tool">
+          <span class="roadmap-tool-name">${item.tool}</span>
+          ${hasInstall ? `<button class="roadmap-install-btn" onclick="event.stopPropagation();openInstall('${item.tool.replace(/'/g, "\\'")}')">📚 آموزش نصب</button>` : ''}
+          ${item.url ? `<a href="${item.url}" target="_blank" class="roadmap-link-btn">مشاهده →</a>` : ''}
+        </div>` : ''}
+        ${item.tip ? `<div class="roadmap-step-tip">💡 ${item.tip}</div>` : ''}
+      </div>
+    </div>`;
+  });
+
+  html += '</div>';
+
+  // Action buttons
+  html += `<div class="roadmap-actions">
+    <button onclick="closeRoadmap()" class="roadmap-action-btn roadmap-action-secondary">بازگشت</button>
+    <button onclick="roadmapState={step:1,category:null,level:null,budget:null};renderRoadmapWizard();" class="roadmap-action-btn roadmap-action-primary">مسیر جدید 🔄</button>
+  </div>`;
+
+  document.getElementById('roadmapResult').innerHTML = html;
+  document.getElementById('roadmapResult').classList.add('show');
+
+  // Animate steps
+  setTimeout(() => {
+    document.querySelectorAll('.roadmap-step').forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), i * 150);
+    });
+  }, 100);
 }
 
 // ═══════════════════════════════════════════
