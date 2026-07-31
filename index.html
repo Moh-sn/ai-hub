@@ -2794,7 +2794,32 @@ const defaultRatings = {
   'Groq':            [8, 8, 7, 9, 10],
   'OpenRouter':      [7, 8, 8, 9, 8],
   'Flow (Google)':   [8, 7, 7, 8, 8],
-  'Ollama':          [7, 8, 8, 10, 8]
+  'Ollama':          [7, 8, 8, 10, 8],
+  // New tools - Hidden Gems
+  'MiMo':            [7, 9, 8, 10, 9],
+  'DeepSeek Coder':  [7, 9, 9, 10, 8],
+  'Qwen Coder':      [7, 9, 8, 10, 8],
+  'Continue.dev':    [8, 8, 8, 10, 8],
+  'Cody':            [8, 8, 8, 7, 8],
+  'Adobe Firefly':   [8, 9, 8, 6, 7],
+  'Playground AI':   [8, 8, 7, 9, 8],
+  'Microsoft Designer':[9, 7, 7, 10, 8],
+  'Recraft':         [7, 9, 8, 8, 7],
+  'Luma AI':         [7, 9, 9, 7, 7],
+  'Minimax Video':   [7, 8, 8, 8, 7],
+  'Genmo':           [7, 8, 7, 8, 7],
+  'Murf AI':         [8, 8, 7, 7, 8],
+  'WellSaid Labs':   [7, 9, 7, 5, 7],
+  'Soundraw':        [8, 7, 8, 7, 7],
+  'Copy.ai':         [8, 7, 8, 7, 8],
+  'Rytr':            [8, 7, 7, 9, 8],
+  'LangChain':       [6, 9, 10, 10, 6],
+  'LlamaIndex':      [6, 9, 9, 10, 7],
+  'Flowise':         [8, 7, 8, 9, 7],
+  'Andi Search':     [8, 8, 7, 9, 9],
+  'Anyscale':        [6, 9, 9, 8, 8],
+  'DeepInfra':       [7, 8, 8, 9, 9],
+  'Fireworks AI':    [7, 8, 8, 9, 9]
 };
 const ratingLabels = ['سادگی', 'کیفیت', 'امکانات', 'ارزش قیمت', 'سرعت'];
 
@@ -2812,7 +2837,12 @@ const categories = [
       { name: 'DeepSeek', desc: 'مدل قوی و رایگان برای کدنویسی', icon: '🔮', pricing: 'free', level: 'beginner', url: 'https://chat.deepseek.com', features: ['رایگان', 'کدنویسی قوی', 'منبع باز'] },
       { name: 'Replit Agent', desc: 'ساخت اپ کامل فقط با توضیح متنی', icon: '🔄', pricing: 'freemium', level: 'beginner', url: 'https://replit.com', features: ['بدون نصب', 'استقرار خودکار', 'مناسب مبتدی'] },
       { name: 'Codeium', desc: 'تکمیل کد رایگان برای VS Code', icon: '🆓', pricing: 'free', level: 'beginner', url: 'https://codeium.com', features: ['رایگان', 'پشتیبانی چند زبان', 'سریع'] },
-      { name: 'Windsurf', desc: 'ادیتور AI جدید با Flow awareness', icon: '🏄', pricing: 'freemium', level: 'pro', url: 'https://windsurf.com', features: ['درک جریان کد', 'AI native', 'رایگان محدود'] }
+      { name: 'Windsurf', desc: 'ادیتور AI جدید با Flow awareness', icon: '🏄', pricing: 'freemium', level: 'pro', url: 'https://windsurf.com', features: ['درک جریان کد', 'AI native', 'رایگان محدود'] },
+      { name: 'MiMo', desc: 'مدل کدنویسی شیائومی — سریع و ارزان', icon: '📱', pricing: 'free', level: 'pro', url: 'https://huggingface.co/XiaomiMiMo', features: ['متن‌باز', 'سریع', 'ارزان', 'کدنویسی عالی'] },
+      { name: 'DeepSeek Coder', desc: 'بهترین مدل متن‌باز کدنویسی', icon: '🐉', pricing: 'free', level: 'pro', url: 'https://deepseek.com', features: ['متن‌باز', 'کدنویسی 338 زبان', 'رایگان', 'محلی اجرا'] },
+      { name: 'Qwen Coder', desc: 'مدل کدنویسی علی‌بابا — عالی برای چند زبانه', icon: '🦙', pricing: 'free', level: 'pro', url: 'https://qwenlm.github.io', features: ['متن‌باز', 'چند زبانه', 'سریع', 'رایگان'] },
+      { name: 'Continue.dev', desc: 'ایجنت کدنویسی متن‌باز در VS Code', icon: '🔄', pricing: 'free', level: 'beginner', url: 'https://continue.dev', features: ['متن‌باز', 'VS Code', 'هر مدلی', 'رایگان'] },
+      { name: 'Cody', desc: 'ایجنت کدنویسی Sourcegraph — درک عمیق کد', icon: '🔍', pricing: 'freemium', level: 'pro', url: 'https://sourcegraph.com/cody', features: ['درک پروژه', 'جستجوی کد', 'چند فایل', 'رایگان'] }
     ]
   },
   {
@@ -2827,7 +2857,11 @@ const categories = [
       { name: 'Leonardo AI', desc: 'پلتفرم طراحی با ابزارهای متنوع', icon: '🎭', pricing: 'freemium', level: 'beginner', url: 'https://leonardo.ai', features: ['ابزارهای متنوع', 'رایگان روزانه', 'آموزش مدل'] },
       { name: 'Ideogram', desc: 'تولید عکس با متن فارسی و انگلیسی', icon: '📝', pricing: 'freemium', level: 'beginner', url: 'https://ideogram.ai', features: ['متن در تصویر عالی', 'رایگان محدود', 'کیفیت بالا'] },
       { name: 'Flux', desc: 'مدل جدید و سریع با کیفیت بالا', icon: '⚡', pricing: 'freemium', level: 'pro', url: 'https://blackforestlabs.ai', features: ['سرعت بالا', 'کیفیت رقابتی', 'متن‌باز'] },
-      { name: 'Canva AI', desc: 'طراحی گرافیکی ساده با کمک AI', icon: '🖼️', pricing: 'freemium', level: 'beginner', url: 'https://canva.com', features: ['رابط آسان', 'قالب‌های آماده', 'مناسب همه'] }
+      { name: 'Canva AI', desc: 'طراحی گرافیکی ساده با کمک AI', icon: '🖼️', pricing: 'freemium', level: 'beginner', url: 'https://canva.com', features: ['رابط آسان', 'قالب‌های آماده', 'مناسب همه'] },
+      { name: 'Adobe Firefly', desc: 'طراحی حرفه‌ای با Adobe — ادغام با Photoshop', icon: '🔥', pricing: 'freemium', level: 'pro', url: 'https://firefly.adobe.com', features: ['ادغام با Adobe', 'کیفیت حرفه‌ای', 'حقوق کپی‌رایت'] },
+      { name: 'Playground AI', desc: 'تولید عکس رایگان با کیفیت بالا', icon: '🎨', pricing: 'free', level: 'beginner', url: 'https://playground.com', features: ['رایگان', '500 عکس روزانه', 'سبک‌های متنوع'] },
+      { name: 'Microsoft Designer', desc: 'طراحی سریع با AI مایکروسافت', icon: '📐', pricing: 'free', level: 'beginner', url: 'https://designer.microsoft.com', features: ['رایگان', 'قالب هوشمند', 'ادغام با Office'] },
+      { name: 'Recraft', desc: 'طراحی وکتور و برند با AI', icon: '✏️', pricing: 'freemium', level: 'pro', url: 'https://www.recraft.ai', features: ['وکتور', 'برندینگ', 'کیفیت بالا'] }
     ]
   },
   {
@@ -2843,7 +2877,10 @@ const categories = [
       { name: 'CapCut AI', desc: 'ویرایش ویدیو با ابزارهای AI رایگان', icon: '✂️', pricing: 'free', level: 'beginner', url: 'https://capcut.com', features: ['رایگان', 'زیرنویس خودکار', 'قالب آماده'] },
       { name: 'Synthesia', desc: 'ساخت ویدیو با آواتار دیجیتال', icon: '🧑‍💼', pricing: 'paid', level: 'pro', url: 'https://synthesia.io', features: ['آواتار واقعی', '۱۲۰+ زبان', 'مناسب آموزش'] },
       { name: 'HeyGen', desc: 'تبدیل متن به ویدیو با آواتار', icon: '👋', pricing: 'paid', level: 'beginner', url: 'https://heygen.com', features: ['ترجمه ویدیو', 'صداگذاری AI', 'رابط آسان'] },
-      { name: 'Higgsfield', desc: 'پلتفرم خلاقیت AI — ویدیو، عکس، سینما', icon: '🎬', pricing: 'freemium', level: 'beginner', url: 'https://higgsfield.ai', features: ['Seedance 2.0', 'Cinema Studio', ' presets ویژال افکت'] }
+      { name: 'Higgsfield', desc: 'پلتفرم خلاقیت AI — ویدیو، عکس، سینما', icon: '🎬', pricing: 'freemium', level: 'beginner', url: 'https://higgsfield.ai', features: ['Seedance 2.0', 'Cinema Studio', ' presets ویژال افکت'] },
+      { name: 'Luma AI', desc: 'تولید ویدیوی 3D و NeRF از عکس', icon: '🌐', pricing: 'freemium', level: 'pro', url: 'https://lumalabs.ai', features: ['3D واقعی', 'NeRF', 'Dream Machine'] },
+      { name: 'Minimax Video', desc: 'تولید ویدیوی سینمایی با کیفیت بالا', icon: '🎥', pricing: 'freemium', level: 'pro', url: 'https://minimaxi.com', features: ['کیفیت سینمایی', ' حرکت دوربین', 'رایگان محدود'] },
+      { name: 'Genmo', desc: 'تولید ویدیوی خلاقانه از متن', icon: '✨', pricing: 'freemium', level: 'beginner', url: 'https://genmo.ai', features: ['خلاقانه', 'سبک‌های متنوع', 'رایگان'] }
     ]
   },
   {
@@ -2857,7 +2894,10 @@ const categories = [
       { name: 'Udio', desc: 'ساخت موزیک با کیفیت بالا', icon: '🎵', pricing: 'freemium', level: 'beginner', url: 'https://udio.com', features: ['کیفیت بالا', 'سبک‌های متنوع', 'رایگان'] },
       { name: 'Bark', desc: 'مدل متن‌باز تبدیل متن به صدا', icon: '🐕', pricing: 'free', level: 'pro', url: 'https://github.com/suno-ai/bark', features: ['رایگان', 'متن‌باز', 'اجرا روی سیستم'] },
       { name: 'AIVA', desc: 'آهنگسازی هوشمند موزیک', icon: '🎼', pricing: 'freemium', level: 'pro', url: 'https://aiva.ai', features: ['آهنگسازی حرفه‌ای', 'سبک‌های کلاسیک', 'ویرایش MIDI'] },
-      { name: 'Riffusion', desc: 'تولید موزیک با مدل تصویری', icon: '🎸', pricing: 'free', level: 'beginner', url: 'https://riffusion.com', features: ['رایگان', 'خلاقانه', 'سریع'] }
+      { name: 'Riffusion', desc: 'تولید موزیک با مدل تصویری', icon: '🎸', pricing: 'free', level: 'beginner', url: 'https://riffusion.com', features: ['رایگان', 'خلاقانه', 'سریع'] },
+      { name: 'Murf AI', desc: 'تولید صدای حرفه‌ای از متن', icon: '🎙️', pricing: 'freemium', level: 'beginner', url: 'https://murf.ai', features: ['صدا واقعی', '120+ صدا', '19+ زبان'] },
+      { name: 'WellSaid Labs', desc: 'TTS حرفه‌ای با صدای انسانی', icon: '🗣️', pricing: 'paid', level: 'pro', url: 'https://wellsaidlabs.com', features: ['کیفیت بالا', 'صداهای برند', 'API'] },
+      { name: 'Soundraw', desc: 'تولید موزیک پس‌زمینه با AI', icon: '🎶', pricing: 'freemium', level: 'beginner', url: 'https://soundraw.io', features: ['پس‌زمینه', 'ویرایش آسان', 'حقوق کپی‌رایت'] }
     ]
   },
   {
@@ -2871,7 +2911,9 @@ const categories = [
       { name: 'Gemini', desc: 'دسترسی به اطلاعات لحظه‌ای Google', icon: '💎', pricing: 'freemium', level: 'beginner', url: 'https://gemini.google.com', features: ['اطلاعات به‌روز', 'ادغام Google', 'رایگان'] },
       { name: 'Jasper', desc: 'نوشتن محتوای بازاریابی', icon: '📝', pricing: 'paid', level: 'pro', url: 'https://jasper.ai', features: ['قالب‌های بازاریابی', 'tone of voice', 'تیمی'] },
       { name: 'Writesonic', desc: 'تولید محتوا و کپی تبلیغاتی', icon: '⚡', pricing: 'freemium', level: 'beginner', url: 'https://writesonic.com', features: ['قالب‌های متنوع', 'سریع', 'رایگان محدود'] },
-      { name: 'Grammarly', desc: 'تصحیح و بهبود نگارش متن', icon: '✅', pricing: 'freemium', level: 'beginner', url: 'https://grammarly.com', features: ['تصحیح خودکار', 'بهبود لحن', 'افزونه مرورگر'] }
+      { name: 'Grammarly', desc: 'تصحیح و بهبود نگارش متن', icon: '✅', pricing: 'freemium', level: 'beginner', url: 'https://grammarly.com', features: ['تصحیح خودکار', 'بهبود لحن', 'افزونه مرورگر'] },
+      { name: 'Copy.ai', desc: 'تولید محتوای بازاریابی با AI', icon: '📋', pricing: 'freemium', level: 'beginner', url: 'https://copy.ai', features: ['قالب‌های متنوع', 'Workflow خودکار', 'رایگان'] },
+      { name: 'Rytr', desc: 'نوشتن سریع مقاله و کپی', icon: '✍️', pricing: 'freemium', level: 'beginner', url: 'https://rytr.me', features: ['ارزان', 'سریع', '30+ زبان'] }
     ]
   },
   {
@@ -2898,7 +2940,10 @@ const categories = [
       { name: 'Botpress', desc: 'ساخت چت‌بات بدون کدنویسی', icon: '💬', pricing: 'freemium', level: 'beginner', url: 'https://botpress.com', features: ['بدون کد', 'رابط بصری', 'ادغام'] },
       { name: 'n8n', desc: 'اتوماسیون و اتصال ابزارها با AI', icon: '🔗', pricing: 'freemium', level: 'pro', url: 'https://n8n.io', features: ['اتوماسیون', '۴۰۰+ ادغام', 'خودمیزبان'] },
       { name: 'Make (Integromat)', desc: 'اتوماسیون بصری با هوش مصنوعی', icon: '⚙️', pricing: 'freemium', level: 'beginner', url: 'https://make.com', features: ['رابط بصری', 'قالب آماده', 'ساده'] },
-      { name: 'Dify', desc: 'پلتفرم ساخت اپ‌های AI', icon: '🏗️', pricing: 'freemium', level: 'pro', url: 'https://dify.ai', features: ['RAG', 'Agent', 'متن‌باز'] }
+      { name: 'Dify', desc: 'پلتفرم ساخت اپ‌های AI', icon: '🏗️', pricing: 'freemium', level: 'pro', url: 'https://dify.ai', features: ['RAG', 'Agent', 'متن‌باز'] },
+      { name: 'LangChain', desc: 'چارچوب محبوب ساخت ایجنت و LLM apps', icon: '🔗', pricing: 'free', level: 'pro', url: 'https://langchain.com', features: ['متن‌باز', 'انعطاف‌پذیر', 'جامعه بزرگ'] },
+      { name: 'LlamaIndex', desc: 'ایندکس‌گذاری و جستجوی اسناد با AI', icon: '📚', pricing: 'free', level: 'pro', url: 'https://llamaindex.ai', features: ['RAG', 'جستجوی اسناد', 'متن‌باز'] },
+      { name: 'Flowise', desc: 'ساخت ایجنت و workflow بصری با Drag & Drop', icon: '🔄', pricing: 'free', level: 'beginner', url: 'https://flowiseai.com', features: ['بصری', 'Drag & Drop', 'متن‌باز'] }
     ]
   },
   {
@@ -2911,7 +2956,8 @@ const categories = [
       { name: 'Phind', desc: 'جستجوی تخصصی برنامه‌نویسی', icon: '💻', pricing: 'freemium', level: 'pro', url: 'https://phind.com', features: ['تخصصی کد', 'سریع', 'منابع'] },
       { name: 'You.com', desc: 'جستجوی هوشمند با AI Assistant', icon: '🌐', pricing: 'freemium', level: 'beginner', url: 'https://you.com', features: ['Chat + Search', 'رایگان', '-plugins'] },
       { name: 'Kagi', desc: 'جستجوی بدون تبلیغ با AI', icon: '🔑', pricing: 'paid', level: 'pro', url: 'https://kagi.com', features: ['بدون تبلیغ', 'شخصی‌سازی', 'کیفیت بالا'] },
-      { name: 'Gemini Search', desc: 'جستجوی Google با هوش مصنوعی', icon: '💎', pricing: 'free', level: 'beginner', url: 'https://gemini.google.com', features: ['رایگان', 'اطلاعات لحظه‌ای', 'ادغام Google'] }
+      { name: 'Gemini Search', desc: 'جستجوی Google با هوش مصنوعی', icon: '💎', pricing: 'free', level: 'beginner', url: 'https://gemini.google.com', features: ['رایگان', 'اطلاعات لحظه‌ای', 'ادغام Google'] },
+      { name: 'Andi Search', desc: 'جستجوی هوشمند با پاسخ‌های دقیق', icon: '🤖', pricing: 'free', level: 'beginner', url: 'https://andisearch.com', features: ['رایگان', 'دقیق', 'بدون تبلیغ'] }
     ]
   },
   {
@@ -2927,7 +2973,10 @@ const categories = [
       { name: 'Groq', desc: 'سریعترین اجرای مدل‌های زبانی', icon: '⚡', pricing: 'freemium', level: 'beginner', url: 'https://groq.com', features: ['سرعت بالا', 'رایگان', 'API'] },
       { name: 'OpenRouter', desc: 'دسترسی به همه مدل‌ها از یک API', icon: '🔀', pricing: 'freemium', level: 'pro', url: 'https://openrouter.ai', features: ['یک API', 'چند مدل', 'ارزان'] },
       { name: 'Flow (Google)', desc: 'طراحی و تولید محتوا با AI گوگل', icon: '🌊', pricing: 'freemium', level: 'beginner', url: 'https://flow.google.com', features: ['رایگان', 'ادغام Google', 'طراحی'] },
-      { name: 'Ollama', desc: 'اجرای مدل‌ها روی کامپیوتر شخصی', icon: '🦙', pricing: 'free', level: 'pro', url: 'https://ollama.com', features: ['متن‌باز', 'آفلاین', 'رایگان'] }
+      { name: 'Ollama', desc: 'اجرای مدل‌ها روی کامپیوتر شخصی', icon: '🦙', pricing: 'free', level: 'pro', url: 'https://ollama.com', features: ['متن‌باز', 'آفلاین', 'رایگان'] },
+      { name: 'Anyscale', desc: 'اجرای مقیاس‌پذیر مدل‌ها در ابر', icon: '☁️', pricing: 'freemium', level: 'pro', url: 'https://anyscale.com', features: ['مقیاس‌پذیر', 'سریع', 'Enterprise'] },
+      { name: 'DeepInfra', desc: 'اجرای سریع و ارزان مدل‌ها', icon: '⚡', pricing: 'freemium', level: 'beginner', url: 'https://deepinfra.com', features: ['ارزان', 'سریع', 'API ساده'] },
+      { name: 'Fireworks AI', desc: 'اجرای مدل‌ها با سرعت بالا', icon: '🔥', pricing: 'freemium', level: 'pro', url: 'https://fireworks.ai', features: ['سرعت بالا', 'کیفیت', 'API'] }
     ]
   },
   {
@@ -2991,6 +3040,38 @@ const categories = [
           connect: 'مستقیم در ترمینال اجرا میشه'
         }
       }
+    ]
+  },
+  {
+    id: 'hidden-gems',
+    emoji: '💎',
+    name: 'گنج‌های پنهان',
+    desc: 'ابزارهای عالی که کمتر کسی میشناسه — ولی باید بشناسی!',
+    tools: [
+      { name: 'MiMo', desc: 'مدل کدنویسی شیائومی — سریع، ارزان، و عالی', icon: '📱', pricing: 'free', level: 'pro', url: 'https://huggingface.co/XiaomiMiMo', features: ['متن‌باز', 'سریع‌تر از GPT-4', 'ارزان', 'کدنویسی تخصصی'] },
+      { name: 'DeepSeek Coder', desc: 'بهترین مدل متن‌باز کدنویسی در جهان', icon: '🐉', pricing: 'free', level: 'pro', url: 'https://deepseek.com', features: ['338 زبان برنامه‌نویسی', '128K context', 'رایگان', 'محلی اجرا'] },
+      { name: 'Qwen Coder', desc: 'مدل کدنویسی علی‌بابا — عالی برای چند زبانه', icon: '🦙', pricing: 'free', level: 'pro', url: 'https://qwenlm.github.io', features: ['چند زبانه', 'سریع', 'متن‌باز', 'رایگان'] },
+      { name: 'Adobe Firefly', desc: 'طراحی حرفه‌ای با Adobe — ادغام کامل با Photoshop', icon: '🔥', pricing: 'freemium', level: 'pro', url: 'https://firefly.adobe.com', features: ['ادغام با Adobe', 'حقوق کپی‌رایت امن', 'کیفیت حرفه‌ای'] },
+      { name: 'Playground AI', desc: 'تولید عکس رایگان — 500 عکس در روز!', icon: '🎨', pricing: 'free', level: 'beginner', url: 'https://playground.com', features: ['500 عکس روزانه', 'رایگان', 'سبک‌های متنوع'] },
+      { name: 'Microsoft Designer', desc: 'طراحی سریع با AI مایکروسافت — رایگان و قدرتمند', icon: '📐', pricing: 'free', level: 'beginner', url: 'https://designer.microsoft.com', features: ['رایگان', 'قالب هوشمند', 'ادغام با Office'] },
+      { name: 'Recraft', desc: 'طراحی وکتور و برند با AI — حرفه‌ای و رایگان', icon: '✏️', pricing: 'freemium', level: 'pro', url: 'https://www.recraft.ai', features: ['وکتور', 'برندینگ', 'کیفیت بالا'] },
+      { name: 'Luma AI', desc: 'تولید ویدیوی 3D و NeRF از عکس — آینده ویدیو', icon: '🌐', pricing: 'freemium', level: 'pro', url: 'https://lumalabs.ai', features: ['3D واقعی', 'NeRF', 'Dream Machine'] },
+      { name: 'Minimax Video', desc: 'تولید ویدیوی سینمایی با کیفیت بالا', icon: '🎥', pricing: 'freemium', level: 'pro', url: 'https://minimaxi.com', features: ['کیفیت سینمایی', 'حرکت دوربین', 'رایگان محدود'] },
+      { name: 'Genmo', desc: 'تولید ویدیوی خلاقانه از متن — ساده و سریع', icon: '✨', pricing: 'freemium', level: 'beginner', url: 'https://genmo.ai', features: ['خلاقانه', 'سبک‌های متنوع', 'رایگان'] },
+      { name: 'Murf AI', desc: 'تولید صدای حرفه‌ای از متن — 120+ صدا', icon: '🎙️', pricing: 'freemium', level: 'beginner', url: 'https://murf.ai', features: ['120+ صدا', '19+ زبان', 'کیفیت بالا'] },
+      { name: 'WellSaid Labs', desc: 'TTS حرفه‌ای با صدای انسانی — برای برندها', icon: '🗣️', pricing: 'paid', level: 'pro', url: 'https://wellsaidlabs.com', features: ['کیفیت بالا', 'صداهای برند', 'API'] },
+      { name: 'Soundraw', desc: 'تولید موزیک پس‌زمینه — بدون حق کپی‌رایت', icon: '🎶', pricing: 'freemium', level: 'beginner', url: 'https://soundraw.io', features: ['پس‌زمینه', 'حقوق کپی‌رایت', 'ویرایش آسان'] },
+      { name: 'Copy.ai', desc: 'تولید محتوای بازاریابی — Workflow خودکار', icon: '📋', pricing: 'freemium', level: 'beginner', url: 'https://copy.ai', features: ['Workflow خودکار', 'قالب‌های متنوع', 'رایگان'] },
+      { name: 'Rytr', desc: 'نوشتن سریع مقاله و کپی — ارزان و سریع', icon: '✍️', pricing: 'freemium', level: 'beginner', url: 'https://rytr.me', features: ['ارزان', '30+ زبان', 'سریع'] },
+      { name: 'LangChain', desc: 'چارچوب محبوب ساخت ایجنت و LLM apps', icon: '🔗', pricing: 'free', level: 'pro', url: 'https://langchain.com', features: ['متن‌باز', 'انعطاف‌پذیر', 'جامعه بزرگ'] },
+      { name: 'LlamaIndex', desc: 'ایندکس‌گذاری و جستجوی اسناد با AI', icon: '📚', pricing: 'free', level: 'pro', url: 'https://llamaindex.ai', features: ['RAG', 'جستجوی اسناد', 'متن‌باز'] },
+      { name: 'Flowise', desc: 'ساخت ایجنت و workflow بصری — Drag & Drop', icon: '🔄', pricing: 'free', level: 'beginner', url: 'https://flowiseai.com', features: ['بصری', 'Drag & Drop', 'متن‌باز'] },
+      { name: 'Andi Search', desc: 'جستجوی هوشمند با پاسخ‌های دقیق — رایگان', icon: '🤖', pricing: 'free', level: 'beginner', url: 'https://andisearch.com', features: ['رایگان', 'دقیق', 'بدون تبلیغ'] },
+      { name: 'Continue.dev', desc: 'ایجنت کدنویسی متن‌باز در VS Code', icon: '🔄', pricing: 'free', level: 'beginner', url: 'https://continue.dev', features: ['متن‌باز', 'VS Code', 'هر مدلی'] },
+      { name: 'Cody', desc: 'ایجنت کدنویسی Sourcegraph — درک عمیق کد', icon: '🔍', pricing: 'freemium', level: 'pro', url: 'https://sourcegraph.com/cody', features: ['درک پروژه', 'جستجوی کد', 'رایگان'] },
+      { name: 'Anyscale', desc: 'اجرای مقیاس‌پذیر مدل‌ها در ابر', icon: '☁️', pricing: 'freemium', level: 'pro', url: 'https://anyscale.com', features: ['مقیاس‌پذیر', 'سریع', 'Enterprise'] },
+      { name: 'DeepInfra', desc: 'اجرای سریع و ارزان مدل‌ها', icon: '⚡', pricing: 'freemium', level: 'beginner', url: 'https://deepinfra.com', features: ['ارزان', 'سریع', 'API ساده'] },
+      { name: 'Fireworks AI', desc: 'اجرای مدل‌ها با سرعت بالا', icon: '🔥', pricing: 'freemium', level: 'pro', url: 'https://fireworks.ai', features: ['سرعت بالا', 'کیفیت', 'API'] }
     ]
   }
 ];
@@ -4111,6 +4192,40 @@ const roadmapData = {
         { step: 5, title: 'شرکت AI Agents', icon: '🏢', desc: 'شرکت ایجنت تأسیس کن', tool: null, url: null, tip: 'Enterprise sales' }
       ]
     }
+  },
+  'hidden-gems': {
+    beginner: {
+      free: [
+        { step: 1, title: 'شروع با Playground AI', icon: '🎨', desc: 'تولید عکس رایگان — 500 عکس در روز', tool: 'Playground AI', url: 'https://playground.com', tip: 'هر روز تمرین کن' },
+        { step: 2, title: 'آشنایی با Andi Search', icon: '🤖', desc: 'جستجوی هوشمند و دقیق', tool: 'Andi Search', url: 'https://andisearch.com', tip: 'جایگزین Google' },
+        { step: 3, title: 'تولید محتوا با Copy.ai', icon: '📋', desc: 'محتوای بازاریابی خودکار', tool: 'Copy.ai', url: 'https://copy.ai', tip: 'Workflow بساز' },
+        { step: 4, title: 'یادگیری Flowise', icon: '🔄', desc: 'ساخت ایجنت بصری', tool: 'Flowise', url: 'https://flowiseai.com', tip: 'Drag & Drop' },
+        { step: 5, title: 'اولین پروژه', icon: '🚀', desc: 'ابزار خودت رو بساز', tool: null, url: null, tip: 'ترکیب ابزارها' }
+      ],
+      any: [
+        { step: 1, title: 'Microsoft Designer', icon: '📐', desc: 'طراحی حرفه‌ای رایگان', tool: 'Microsoft Designer', url: 'https://designer.microsoft.com', tip: 'قالب هوشمند' },
+        { step: 2, title: 'Murf AI', icon: '🎙️', desc: 'صدای حرفه‌ای از متن', tool: 'Murf AI', url: 'https://murf.ai', tip: '120+ صدا' },
+        { step: 3, title: 'Soundraw', icon: '🎶', desc: 'موزیک پس‌زمینه', tool: 'Soundraw', url: 'https://soundraw.io', tip: 'بدون حق کپی' },
+        { step: 4, title: 'Rytr', icon: '✍️', desc: 'نوشتن سریع', tool: 'Rytr', url: 'https://rytr.me', tip: '30+ زبان' },
+        { step: 5, title: 'پورتفولیو', icon: '💼', desc: 'کارهات رو نشون بده', tool: null, url: null, tip: 'Dribbble' }
+      ]
+    },
+    pro: {
+      free: [
+        { step: 1, title: 'شروع با DeepSeek Coder', icon: '🐉', desc: 'بهترین مدل متن‌باز کدنویسی', tool: 'DeepSeek Coder', url: 'https://deepseek.com', tip: 'محلی اجرا کن' },
+        { step: 2, title: 'استفاده از MiMo', icon: '📱', desc: 'مدل سریع شیائومی', tool: 'MiMo', url: 'https://huggingface.co/XiaomiMiMo', tip: 'سریع‌تر از GPT-4' },
+        { step: 3, title: 'نصب Continue.dev', icon: '🔄', desc: 'ایجنت در VS Code', tool: 'Continue.dev', url: 'https://continue.dev', tip: 'هر مدلی' },
+        { step: 4, title: 'اتصال DeepInfra', icon: '⚡', desc: 'اجرای ارزان مدل‌ها', tool: 'DeepInfra', url: 'https://deepinfra.com', tip: 'API ساده' },
+        { step: 5, title: 'پروژه حرفه‌ای', icon: '🏗️', desc: 'SaaS بساز', tool: null, url: null, tip: 'ترکیب ابزارها' }
+      ],
+      any: [
+        { step: 1, title: 'Adobe Firefly', icon: '🔥', desc: 'طراحی حرفه‌ای', tool: 'Adobe Firefly', url: 'https://firefly.adobe.com', tip: 'ادغام Photoshop' },
+        { step: 2, title: 'Luma AI', icon: '🌐', desc: 'ویدیوی 3D', tool: 'Luma AI', url: 'https://lumalabs.ai', tip: 'Dream Machine' },
+        { step: 3, title: 'LangChain', icon: '🔗', desc: 'چارچوب ایجنت', tool: 'LangChain', url: 'https://langchain.com', tip: 'Agent بساز' },
+        { step: 4, title: 'Recraft', icon: '✏️', desc: 'طراحی وکتور', tool: 'Recraft', url: 'https://www.recraft.ai', tip: 'برندینگ' },
+        { step: 5, title: 'آژانس AI', icon: '🏢', desc: '服务 AI بزن', tool: null, url: null, tip: 'ترکیب همه ابزارها' }
+      ]
+    }
   }
 };
 
@@ -4158,7 +4273,8 @@ function renderRoadmapWizard() {
       { id: 'agents', label: '🤖 اتوماسیون', category: 'agents' },
       { id: 'search', label: '🔍 جستجو', category: 'search' },
       { id: 'platforms', label: '🏗️ پلتفرم مدل', category: 'platforms' },
-      { id: 'agents-pro', label: '🛠️ ایجنت حرفه‌ای', category: 'agents-pro' }
+      { id: 'agents-pro', label: '🛠️ ایجنت حرفه‌ای', category: 'agents-pro' },
+      { id: 'hidden-gems', label: '💎 گنج‌های پنهان', category: 'hidden-gems' }
     ];
     html += catOptions.map(opt => `<button class="wizard-option" onclick="roadmapSelect(1, '${opt.id}', '${opt.category}')">${opt.label}</button>`).join('');
   } else if (roadmapState.step === 2) {
@@ -4196,7 +4312,7 @@ function showRoadmapResult() {
     'coding': 'برنامه‌نویسی', 'image': 'طراحی عکس', 'video': 'ساخت ویدیو',
     'audio': 'صدا و موزیک', 'text': 'نوشتن', 'data': 'تحلیل داده',
     'agents': 'اتوماسیون', 'search': 'جستجو', 'platforms': 'پلتفرم مدل',
-    'agents-pro': 'ایجنت حرفه‌ای'
+    'agents-pro': 'ایجنت حرفه‌ای', 'hidden-gems': 'گنج‌های پنهان'
   };
 
   let html = `<div class="roadmap-result-header">
